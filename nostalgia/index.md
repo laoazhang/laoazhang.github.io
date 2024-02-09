@@ -3,7 +3,7 @@ title: 'Nostalgia (Stuff from 90&#8242;s)'
 author: Tomomi Imura
 layout: page
 ---
-The original GirlieMac! site started in 1996 and was devoted for total Mac desktop customization for girls. 
+The original Laoazhang! site started in 1996 and was devoted for total Mac desktop customization for girls. 
 I have created varieties of cute little desktop icons, wallpapers, <a href="http://www.kaleidoscope.net/schemes/" target="_blank">Kaleidoscope schemes</a>, fonts etc. all available for download for free.
 
 ### Icons

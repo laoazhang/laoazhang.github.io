@@ -1,0 +1,379 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Touchy-Feely with DOM Events: Rethinking Cross-Device User Interaction &#8211; Laoazhang! Blog</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- Twitter cards -->
+<meta name="twitter:site"    content="@laoazhang">
+<meta name="twitter:creator" content="@laoazhang">
+
+
+<meta name="twitter:card"  content="summary">
+<meta name="twitter:image" content="https://laoazhang.cn/assets/images/avatar.jpg">
+
+
+
+<meta name="twitter:title"   content="Touchy-Feely with DOM Events: Rethinking Cross-Device User Interaction">
+
+
+
+<meta name="twitter:description" content="If you only do what you can do, you will never be more than you are now">
+
+
+<!-- end of Twitter cards -->
+
+<!-- Web Monetization | Interledger -->
+<meta name="monetization" content="$ilp.uphold.com/6NxbkHNq9N84">
+<meta name="monetization" content="$twitter.xrptipbot.com/laoazhang" />
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Touchy-Feely with DOM Events: Rethinking Cross-Device User Interaction">
+<meta property="og:description" content="If you only do what you can do, you will never be more than you are now">
+<meta property="og:url" content="https://laoazhang.cn/blog/2013/04/17/touchy-feely-with-dom-events-rethinking-cross-device-user-interaction/">
+<meta property="og:site_name" content="Laoazhang! Blog">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="I-NDFBl5t1P9fqHmRNZhwu8OOHmwW4HADPiOr_r16cE">
+
+
+
+<link rel="canonical" href="https://laoazhang.cn/blog/2013/04/17/touchy-feely-with-dom-events-rethinking-cross-device-user-interaction/">
+<link href="https://laoazhang.cn/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/main.min.css">
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/ie.min.css">
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://laoazhang.cn/assets/js/vendor/modernizr/modernizr.js"></script>
+
+<!-- Icons -->
+
+<!-- favicon -->
+<link rel="shortcut icon" href="https://laoazhang.cn/assets/ico/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://laoazhang.cn/assets/ico/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://laoazhang.cn/assets/ico/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://laoazhang.cn/assets/ico/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://laoazhang.cn/assets/ico/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="article" itemscope itemtype="https://schema.org/WebPage">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="https://laoazhang.cn/index.html">Laoazhang.cn</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+		    <ul>
+		        
+				<li><a href="https://laoazhang.cn/about" >About</a></li>
+		        
+				<li><a href="https://laoazhang.cn/blog" >Archive</a></li>
+		        
+				<li><a href="https://laoazhang.cn/presentations" >Preso</a></li>
+		        
+				<li><a href="https://laoazhang.cn/doodles" >Sketch Notes</a></li>
+		        
+				<li><a href="https://codepen.io/laoazhang" target="_blank">My CodePen</a></li>
+		        
+		        <li><i class="icon-feed"></i> <a href="https://laoazhang.cn/feed.xml" title="Atom/RSS feed">Feed</a>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+<header role="banner">
+</header>
+
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Blog">
+  <div class="article-author-side">
+  	<img src="https://laoazhang.cn/assets/images/avatar.jpg" class="bio-photo" alt="laoazhang">
+    <h3>laoazhang</h3>
+<p class="bio">An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.</p>
+<a href="https://twitter.com/laoazhang" class="author-social" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+<a href="https://facebook.com/laoazhang" class="author-social" target="_blank"><i class="icon-facebook"></i> Facebook</a>
+
+<a href="https://linkedin.com/in/laoazhang" class="author-social" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>
+<a href="https://instagram.com/laoazhang" class="author-social" target="_blank"><i class="icon-instagram"></i> Instagram</a>
+<a href="https://github.com/laoazhang" class="author-social" target="_blank"><i class="icon-github"></i> Github</a>
+
+
+
+
+        <p class="license">
+      
+    </p>
+
+  </div>
+
+  <article itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+    <div class="headline-wrap">
+      
+      <time datetime="2013-04-17T00:00:00-07:00" itemprop="datePublished"><i class="icon-calendar"></i> April 17, 2013</time>
+
+      
+      <h1 itemprop="name">Touchy-Feely with DOM Events: Rethinking Cross-Device User Interaction</h1>
+      <h2></h2>
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap" itemprop="text">
+      <p><em>This article was originally written for <a href="http://www.developer.nokia.com/Blogs/Code/2013/04/02/touchy-feely-with-dom-events-rethinking-cross-device-user-interaction/" target="_blank">Nokia Code Blog</a> on the earlier this month, and I am re-posting it here with a permission.</em></p>
+
+<hr />
+
+<p>There have been numerous ways for users to interact with web pages on mobile phones. Historically, users navigated the mobile web by pressing physical buttons (arrow keys, soft keys, etc.), while some devices required a stylus.</p>
+
+<p>In last several years, devices with touch-enabled screens have been adopted at such a rapid rate that the touch interaction has become ubiquitous. Now we have tablets that take input not only from touch, but from keyboards and mousepads using optional peripherals.</p>
+
+<p>So what does it mean to you as a web developer? It means you need to detect the correct user input method, and design the correct user experience into your web apps.</p>
+
+<p>In this article, I will explain the state of touch APIs in terms of current web standards, and show you some sample code to demonstrate.</p>
+
+<p><img src="/assets/images/articles/2013/04/touch-lumia920.jpg" alt="demo on Lumia" title="Touch demo on Lumia 920" /></p>
+
+<h2 id="touch-events-v1">Touch Events V.1</h2>
+
+<p>The touch interface was widely popularized when Apple’s iPhone came out, and the DOM touch event was also defined and implemented first on iOS Safari by Apple. Since then, it has been adopted by other browser vendors like Google and Mozilla, as well as web developers as the <em>de-facto</em> standard.</p>
+
+<p>W3C defined the <a href="http://www.w3.org/TR/touch-events/" target="_blank">touch events specification</a> as a set of low-level events that represent one or more points of contact with a touch-sensitive surface, as well as changes to those points with respect to the surface and any DOM elements displayed on or associated with it.</p>
+
+<p>The event types include: <code class="language-plaintext highlighter-rouge">touchstart</code>, <code class="language-plaintext highlighter-rouge">touchend</code>, <code class="language-plaintext highlighter-rouge">touchmove</code>, <code class="language-plaintext highlighter-rouge">touchenter</code>, <code class="language-plaintext highlighter-rouge">touchleave</code> and <code class="language-plaintext highlighter-rouge">touchcancel</code>.</p>
+
+<p><img src="/assets/images/articles/2013/04/touchevents.png" alt="Touch events" title="Touch events" /></p>
+
+<h3 id="example">Example</h3>
+
+<p>The following code snippet, used in <a href="https://dl.dropbox.com/u/1330446/demo/touch-events.html" target="_blank">this example demo</a>, determines the position (in pixel coordinates) of a finger within a canvas element when a touch action is initiated by the user.</p>
+
+<p>The demo tracks a user’s touch points, allowing the user to draw on a kitty cat (in <code class="language-plaintext highlighter-rouge">&lt;canvas&gt;</code>). It will only work on browsers that supports touch events on touch-enabled devices. If you are trying it on a desktop using a mouse or trackpad, you’ll notice that nothing happens on screen.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">drawCanvas</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">canvas</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">touchstart</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">e</span><span class="p">.</span><span class="nf">preventDefault</span><span class="p">();</span> <span class="c1">// canceling default behavior such as scrolling</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageX</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">;</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="u-cant-touch-this">U Can’t Touch This</h2>
+
+<p>So how do you make it work on the desktop when touch events do not fire with a non-touch user input? To support mouse or trackpad events, you need to use the DOM <code class="language-plaintext highlighter-rouge">MouseEvents</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">canvas</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mousedown</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetX</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerX</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span> 
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetY</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerY</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">;</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>So I wrote <a href="https://dl.dropbox.com/u/1330446/demo/mouse-events.html" target="_blank">another demo</a> to demonstrate this.</p>
+
+<p>This demo uses mouse events instead of the touch events, but not both types of events. Try it on a desktop browser and see how it works, and then see how it fails on touch-enabled devices.</p>
+
+<p>To make both user input methods work, you need to support both touch and mouse events together.<br />
+When using <code class="language-plaintext highlighter-rouge">touchstart</code>, <code class="language-plaintext highlighter-rouge">touchmove</code>, and <code class="language-plaintext highlighter-rouge">touchend</code>, you also need to implement using <code class="language-plaintext highlighter-rouge">mousedown</code>, <code class="language-plaintext highlighter-rouge">mousemove</code> and <code class="language-plaintext highlighter-rouge">mouseup</code> respectively.</p>
+
+<p>The completed demo is at the end of this article.</p>
+
+<h2 id="pointer-events">Pointer Events</h2>
+
+<p>Now you probably wish there was a single set of events to handle both the iOS touch event model and the standard mouse events. Well, it turns out there really <em>is</em> a such thing.</p>
+
+<p><img src="/assets/images/articles/2013/04/pointer.png" alt="pointer" width="264" height="272" align="right" /></p>
+
+<p>Microsoft has been working on something called MSPointers to support multi user-inputs, and they <a href="http://www.w3.org/TR/pointerevents" target="_blank">submitted</a> it to the W3C for standardization last year. Now it has reached the Last Call. This new and alternative standard event model is called Pointer Events, and it is designed to handle hardware-agnostic pointer input from devices like a mouse, pen, or touchscreen.</p>
+
+<p>Besides Microsoft, Nokia, Google and Mozilla, are among the industry members working to solve this problem in the W3C Pointer Events Working Group.</p>
+
+<p>This feature has been implemented already in Internet Explorer 10, and has been prototyped in the experimental version of Chromium.</p>
+
+<p>The simple example below gets the x and y pointer coordinates using the pointer events. You will probably notice that the code looks similar to mouse events, which you may find less cumbersome compared with the touch events v1.<br />
+<br style="clear:both" /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">canvas</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">pointerdown</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetX</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerX</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetY</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerY</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">;</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p> </p>
+
+<p>To support Internet Explorer 10 you need to use the prefixed version, so <code class="language-plaintext highlighter-rouge">pointerdown</code>, <code class="language-plaintext highlighter-rouge">pointermove</code> and <code class="language-plaintext highlighter-rouge">pointerup</code> event handler event types should be written as <code class="language-plaintext highlighter-rouge">MSPointerDown</code>, <code class="language-plaintext highlighter-rouge">MSPointerMove</code> and <code class="language-plaintext highlighter-rouge">MSPointerUP</code> respectively.</p>
+
+<p>So <a href="https://dl.dropbox.com/u/1330446/tests/pointer-events.html" target="_blank">try this demo</a> on IE10 on desktop and/or Windows Phone 8.</p>
+
+<h2 id="i-3-you-all">I &lt;3 You All</h2>
+
+<p>As I mentioned earlier, at this moment the only available browsers that support the Pointer Events are IE10 and a prototype build of <a href="http://appendto.com/blog/2013/02/prototype-chromium-build-with-support-for-ms-pointer-events/" target="_blank">Chromium</a>, so it’s a good idea to include iOS touch events and mouse events until other browsers catch up.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">downEvent</span> <span class="o">=</span> <span class="nx">isTouchSupported</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">touchstart</span><span class="dl">'</span> <span class="p">:</span> <span class="p">(</span><span class="nx">isPointerSupported</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">MSPointerDown</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">mousedown</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">canvas</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="nx">downEvent</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">isTouchSupported</span> <span class="p">?</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageX</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">offsetX</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerX</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">isTouchSupported</span> <span class="p">?</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">targetTouches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">offsetY</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerY</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">);</span>
+
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>I have a <a href="https://dl.dropbox.com/u/1330446/demo/all-events.html" target="_blank">demo that supports all the methods</a> I’ve mentioned in the article.</p>
+
+<p>Try this on any modern browser, and it should work! The entire code is <a href="https://gist.github.com/girliemac/5279460" target="_blank">in this gist</a> for you to take a look at.</p>
+
+<p><img alt="Screnshot" src="/assets/images/articles/2013/04/wp_ss_20130330_0001.png" width="320" style="float:left" /></p>
+
+<p><img src="/assets/images/articles/2013/04/qr-pointer-demo.png" alt="QR code" width="129" height="127" /></p>
+
+<h2><br style="clear:both" /></h2>
+
+<h2 id="learn-more">Learn More</h2>
+
+<ul>
+  <li>W3C: <a href="http://www.w3.org/TR/touch-events/" target="_blank">Touch Events version 1</a></li>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/DOM/Touch_events" target="_blank">Touch events</a></li>
+  <li>W3C: <a href="http://www.w3.org/TR/DOM-Level-3-Events/#events-mouseevents" target="_blank">Document Object Model (DOM) Level 3 Events Specification – Mouse Event Types</a></li>
+  <li>W3C: <a href="http://www.w3.org/TR/pointerevents/" target="_blank">Pointer Events</a></li>
+  <li>MSDN: <a href="http://http://msdn.microsoft.com/en-us/library/ie/hh673557(v=vs.85).aspx" target="_blank">Pointer and gesture events</a></li>
+</ul>
+
+      <hr>
+
+      <!-- Pagination -->
+      <ul class="pagination">
+	      
+	        <li class="prev"><a href="/blog/2013/04/16/my-mobile-html5-talks-slides/" rel="prev">&larr; My Mobile HTML5 Talks Slides</a></li>
+	      
+	      
+	        <li class="next"><a href="/blog/2013/06/23/js-conf-2013/" rel="next">JS Conf US Slide &#8211; JS APIs for Hardware Access &rarr;</a></li>
+	      
+	  </ul>
+
+      <hr style="visibility:hidden;">
+
+      <!-- Categories -->
+      
+	  <ul class="categories">
+	      <li><i class="icon-drawer"></i></li>
+	      
+
+	      
+		    
+		    	<li data-size="21"><a href="/categories/#HTML5">
+		    		HTML5
+		    	</a></li>
+		    
+		    	<li data-size="7"><a href="/categories/#IE">
+		    		IE
+		    	</a></li>
+		    
+		    	<li data-size="5"><a href="/categories/#JavaScript">
+		    		JavaScript
+		    	</a></li>
+		    
+		    	<li data-size="12"><a href="/categories/#Mobile">
+		    		Mobile
+		    	</a></li>
+		    
+		    	<li data-size="17"><a href="/categories/#Nokia">
+		    		Nokia
+		    	</a></li>
+		    
+		    	<li data-size="11"><a href="/categories/#UI/UX">
+		    		UI/UX
+		    	</a></li>
+		    
+		    	<li data-size="5"><a href="/categories/#W3C">
+		    		W3C
+		    	</a></li>
+		    
+		    	<li data-size="2"><a href="/categories/#WindowsPhone">
+		    		WindowsPhone
+		    	</a></li>
+		    
+		  
+	      
+
+	  </ul>
+	  
+
+	  <!-- Disqus -->
+	      <div id="disqus_thread" style="margin-top: 3em"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'laoazhang'; // required: replace example with your forum shortname
+				
+
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#main -->
+
+<footer>
+  <small class="copyright">
+    <span>&copy; 2024 laoazhang. Powered by <a href="http://jekyllrb.com">Jekyll</a> with modified <em>Minimal Mistakes</em> theme. Hosted on <a href="http://github.com">Github</a>.
+  </small>
+</footer>
+
+<script src="https://laoazhang.cn/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-2635445-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script>
+
+</script>
+
+</body>
+</html>

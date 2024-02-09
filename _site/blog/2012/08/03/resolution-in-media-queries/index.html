@@ -1,0 +1,344 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Resolution in Media Queries &#8211; Laoazhang! Blog</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- Twitter cards -->
+<meta name="twitter:site"    content="@laoazhang">
+<meta name="twitter:creator" content="@laoazhang">
+
+
+<meta name="twitter:card"  content="summary">
+<meta name="twitter:image" content="https://laoazhang.cn/assets/images/avatar.jpg">
+
+
+
+<meta name="twitter:title"   content="Resolution in Media Queries">
+
+
+
+<meta name="twitter:description" content="If you only do what you can do, you will never be more than you are now">
+
+
+<!-- end of Twitter cards -->
+
+<!-- Web Monetization | Interledger -->
+<meta name="monetization" content="$ilp.uphold.com/6NxbkHNq9N84">
+<meta name="monetization" content="$twitter.xrptipbot.com/laoazhang" />
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Resolution in Media Queries">
+<meta property="og:description" content="If you only do what you can do, you will never be more than you are now">
+<meta property="og:url" content="https://laoazhang.cn/blog/2012/08/03/resolution-in-media-queries/">
+<meta property="og:site_name" content="Laoazhang! Blog">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="I-NDFBl5t1P9fqHmRNZhwu8OOHmwW4HADPiOr_r16cE">
+
+
+
+<link rel="canonical" href="https://laoazhang.cn/blog/2012/08/03/resolution-in-media-queries/">
+<link href="https://laoazhang.cn/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/main.min.css">
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/ie.min.css">
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://laoazhang.cn/assets/js/vendor/modernizr/modernizr.js"></script>
+
+<!-- Icons -->
+
+<!-- favicon -->
+<link rel="shortcut icon" href="https://laoazhang.cn/assets/ico/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://laoazhang.cn/assets/ico/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://laoazhang.cn/assets/ico/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://laoazhang.cn/assets/ico/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://laoazhang.cn/assets/ico/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="article" itemscope itemtype="https://schema.org/WebPage">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="https://laoazhang.cn/index.html">Laoazhang.cn</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+		    <ul>
+		        
+				<li><a href="https://laoazhang.cn/about" >About</a></li>
+		        
+				<li><a href="https://laoazhang.cn/blog" >Archive</a></li>
+		        
+				<li><a href="https://laoazhang.cn/presentations" >Preso</a></li>
+		        
+				<li><a href="https://laoazhang.cn/doodles" >Sketch Notes</a></li>
+		        
+				<li><a href="https://codepen.io/laoazhang" target="_blank">My CodePen</a></li>
+		        
+		        <li><i class="icon-feed"></i> <a href="https://laoazhang.cn/feed.xml" title="Atom/RSS feed">Feed</a>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+<header role="banner">
+</header>
+
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Blog">
+  <div class="article-author-side">
+  	<img src="https://laoazhang.cn/assets/images/avatar.jpg" class="bio-photo" alt="laoazhang">
+    <h3>laoazhang</h3>
+<p class="bio">An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.</p>
+<a href="https://twitter.com/laoazhang" class="author-social" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+<a href="https://facebook.com/laoazhang" class="author-social" target="_blank"><i class="icon-facebook"></i> Facebook</a>
+
+<a href="https://linkedin.com/in/laoazhang" class="author-social" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>
+<a href="https://instagram.com/laoazhang" class="author-social" target="_blank"><i class="icon-instagram"></i> Instagram</a>
+<a href="https://github.com/laoazhang" class="author-social" target="_blank"><i class="icon-github"></i> Github</a>
+
+
+
+
+        <p class="license">
+      
+    </p>
+
+  </div>
+
+  <article itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+    <div class="headline-wrap">
+      
+      <time datetime="2012-08-03T00:00:00-07:00" itemprop="datePublished"><i class="icon-calendar"></i> August 03, 2012</time>
+
+      
+      <h1 itemprop="name">Resolution in Media Queries</h1>
+      <h2></h2>
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap" itemprop="text">
+      <p><img src="/assets/images/wp-content/uploads/2012/08/mq-resolution.png" alt="my preso slide" title="mq-resolution" width="560" height="438" class="size-full wp-image-523" /></p>
+
+<p>I realized I hardly blog about mobile web development, although I do tweet about mobile quite often! (If you have not follow me on twitter, <a href="http;//twitter.com/girlie_mac">follow @girlie_mac </a> now.)</p>
+
+<p>So I decided to post a few short topics from my last <a href="http://girliemac.github.com/presentation-slides/cascade/#1" title="presentation" target="_blank">presentation</a>, and my first topic off the preso is about <a href="http://www.w3.org/TR/css3-mediaqueries/#resolution" target="_blank">CSS resolution</a>.</p>
+
+<h2 id="css-resolution">CSS Resolution</h2>
+
+<p>This is such obscure CSS 2 feature that not many people know or have used.<br />
+The <strong><em>resolution</em></strong> media feature describes the resolution of the output device, and its unit can be-</p>
+
+<ul>
+  <li><strong>dpi</strong> (dots per inch)</li>
+  <li><strong>dpcm</strong> (dots per centimeter), and</li>
+  <li><strong>dppx</strong> (dots per pixel, <a href="http://www.w3.org/TR/css3-values/#resolution" target="_blank">proposed for CSS3</a>)</li>
+</ul>
+
+<h2 id="why-it-matters">Why it matters?</h2>
+
+<p>So why has this become relavent to mobile web development now?</p>
+
+<p>Because mobile display has been up-res’ing since Apple has announced the <a href="http://www.apple.com/iphone/features/retina-display.html" target="_bank">Retina display</a>. To be honest with you, I am not sure if other manufacturers like Samsung had high pixel density displays before Apple, however, the hi-res trend has started ever since.</p>
+
+<p>Retina display has the twice as much pixel density, and its device pixel ratio is 2 (DOM <code class="language-plaintext highlighter-rouge">window.devicePixelRatio == 2</code>), and for example, Nexus One has 1.5.</p>
+
+<p>I am not talking more details on pixel density here, however, if you would like to learn more about what “device pixels” means and how a CSS pixel differs from a device pixel, I recommend PPK’s article, “<a href="http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html" target="_blank">A pixel is not a pixel is not a pixel</a>“.</p>
+
+<h2 id="crazy-vender-differences-on-device-pixel-ratio">Crazy vender differences on device-pixel-ratio</h2>
+
+<p>In Webkit, the media query to differentiate the “regular” display (where a CSS pixel equals to a device pixel) versus the high pixel density displays, <code class="language-plaintext highlighter-rouge">device-pixel-ratio</code> is commonly used. To be precise, you must add the webkit prefix (as of August 2012), as <code class="language-plaintext highlighter-rouge">-webkit-min-device-pixel-ratio</code>, to check the minimum value of 2, 1.5, etc.</p>
+
+<p>So what about non-Webkit?<br />
+Well, this gets more complicated than you think- For Mozilla, prefixed min-device-pixel-ratio is <code class="language-plaintext highlighter-rouge">min--moz-device-pixel-ratio</code>, and for Opera, the prefix rule is similar to webkit, <code class="language-plaintext highlighter-rouge">-o-min-device-pixel-ratio</code>, however, Opera requires the device pixel ratio value as a fraction, as 2/1 and 3/2 (instead of 2 and 1.5, respectively).</p>
+
+<p>This is too annoying, right?</p>
+
+<h2 id="unprefix-it-with-resolution">Unprefix it with resolution</h2>
+
+<p>So here’s a solution – use <strong>resolution</strong>.</p>
+
+<p>Instead of writing,</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1.5</span><span class="p">),</span> 
+       <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min--moz-device-pixel-ratio</span><span class="p">:</span> <span class="m">1.5</span><span class="p">),</span>
+       <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">-o-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">/</span><span class="m">2</span><span class="p">)</span>
+       <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1.5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="nt">some</span> <span class="nt">hi-res</span> <span class="nt">css</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Write this:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1.5</span><span class="p">),</span> 
+       <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-resolution</span><span class="p">:</span> <span class="m">144dpi</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="nt">some</span> <span class="nt">hi-res</span> <span class="nt">css</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>On current mobile browsers, this shorter media-queries work on Webkits (Safari, Chrome, Android, MeeGo/Nokia, Dolphin etc.) and Firefox, Opera <del datetime="2012-08-04T05:52:51+00:00">and IE9+</del>! (<strong>Edit</strong>: IE9 and IE10 <em>do</em> support the resolution, however, it may recognize its value wrongly. e.g. Lumia 800 has the screen resolution of 480×800, while CSS pixel width of 320px, but the CSS resolution value is recognized as 96dpi, instead of 144dpi. <strong>Updated on Aug 23, 2012</strong>: According to Microsoft’s IE team, IE Mobile’s layout is done at 96dpi independently of the device so the dpi value not reflect the actual device.)</p>
+
+<p>In case you wonder where the number 144 comes from – this is 1.5x of the regular screen resolution, 96dpi. If you want to detect Retina (Galaxy Nexus, or any displays with 2x pixel density), you use 192dpi.</p>
+
+<p>Once the proposed unit, <strong>dppx</strong> is supported (no browsers support in this moment), this would be simpler like:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-resolution</span><span class="p">:</span> <span class="m">1.5dppx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="nt">some</span> <span class="nt">hi-res</span> <span class="nt">css</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So stop worrying about the confusing <code class="language-plaintext highlighter-rouge">device-pixel-ratio</code>. Life shouldn’t be more complicated!</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="http://www.w3.org/TR/css3-mediaqueries/#resolution" target="_blank">W3C – Media Queries</a></li>
+  <li><a href="http://www.w3.org/TR/css3-values/#resolution" target="_blank">W3C – CSS Values and Units Module Level 3</a></li>
+</ul>
+
+
+      <hr>
+
+      <!-- Pagination -->
+      <ul class="pagination">
+	      
+	        <li class="prev"><a href="/blog/2012/07/31/html5-the-mobile-approach/" rel="prev">&larr; HTML5: The Mobile Approach</a></li>
+	      
+	      
+	        <li class="next"><a href="/blog/2012/10/13/because-i-want-mobile-web-to-be-a-better-platform/" rel="next">Because I Want Mobile Web to Be A Better Platform &rarr;</a></li>
+	      
+	  </ul>
+
+      <hr style="visibility:hidden;">
+
+      <!-- Categories -->
+      
+	  <ul class="categories">
+	      <li><i class="icon-drawer"></i></li>
+	      
+
+	      
+		    
+		    	<li data-size="27"><a href="/categories/#CSS">
+		    		CSS
+		    	</a></li>
+		    
+		    	<li data-size="15"><a href="/categories/#Firefox">
+		    		Firefox
+		    	</a></li>
+		    
+		    	<li data-size="21"><a href="/categories/#HTML5">
+		    		HTML5
+		    	</a></li>
+		    
+		    	<li data-size="34"><a href="/categories/#iPhone">
+		    		iPhone
+		    	</a></li>
+		    
+		    	<li data-size="5"><a href="/categories/#iPod">
+		    		iPod
+		    	</a></li>
+		    
+		    	<li data-size="12"><a href="/categories/#Mobile">
+		    		Mobile
+		    	</a></li>
+		    
+		    	<li data-size="17"><a href="/categories/#Nokia">
+		    		Nokia
+		    	</a></li>
+		    
+		    	<li data-size="12"><a href="/categories/#Opera">
+		    		Opera
+		    	</a></li>
+		    
+		    	<li data-size="33"><a href="/categories/#WebKit">
+		    		WebKit
+		    	</a></li>
+		    
+		  
+	      
+
+	  </ul>
+	  
+
+	  <!-- Disqus -->
+	      <div id="disqus_thread" style="margin-top: 3em"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'laoazhang'; // required: replace example with your forum shortname
+				
+
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#main -->
+
+<footer>
+  <small class="copyright">
+    <span>&copy; 2024 laoazhang. Powered by <a href="http://jekyllrb.com">Jekyll</a> with modified <em>Minimal Mistakes</em> theme. Hosted on <a href="http://github.com">Github</a>.
+  </small>
+</footer>
+
+<script src="https://laoazhang.cn/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-2635445-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script>
+
+</script>
+
+</body>
+</html>

@@ -1,27 +1,27 @@
-name: GirlieMac! Blog
-short-name: GirlieMac.com
-description: Arbitrary Web and Mobile Writing by Tomomi Imura
-url: https://girliemac.com
-domain: https://girliemac.com
+name: Laoazhang! Blog
+short-name: Laoazhang.cn
+description: If you only do what you can do, you will never be more than you are now
+url: https://laoazhang.cn
+domain: https://laoazhang.cn
 permalink: /blog/:year/:month/:day/:title/
-disqus_shortname: girliemac
+disqus_shortname: laoazhang
 markdown: kramdown
 highlighter: rouge
 port: 4444
 
 # Author information
 owner:
-  name: Tomomi Imura
+  name: laoazhang
   avatar: avatar.jpg
-  bio: "An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer."
-  email: tomomi.i@gmail.com
-  twitter: girlie_mac
-  facebook:
-  github: girliemac
+  bio: 'An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.'
+  email: laoaxiao@gmail.com
+  twitter: laoazhang
+  facebook: laoazhang
+  github: laoazhang
   stackexchange:
-  linkedin: tomomi
-  instagram: girlie_mac
-  flickr: girliemac
+  linkedin: laoazhang
+  instagram: laoazhang
+  flickr:
   tumblr:
   google_plus:
 
@@ -43,11 +43,11 @@ links:
   - title: Sketch Notes
     url: /doodles
   - title: My CodePen
-    url: https://codepen.io/girliemac
+    url: https://codepen.io/laoazhang
     external: true
- #- title: Nostalgia
-    #url: /nostalgia
+  #- title: Nostalgia
+  #url: /nostalgia
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/Los_Angeles
-future:      true
+timezone: America/Los_Angeles
+future: true

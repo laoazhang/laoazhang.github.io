@@ -1,0 +1,320 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Find Your Tweeting Neighbor on iPhone with GeoLocation &#8211; Laoazhang! Blog</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- Twitter cards -->
+<meta name="twitter:site"    content="@laoazhang">
+<meta name="twitter:creator" content="@laoazhang">
+
+
+<meta name="twitter:card"  content="summary">
+<meta name="twitter:image" content="https://laoazhang.cn/assets/images/avatar.jpg">
+
+
+
+<meta name="twitter:title"   content="Find Your Tweeting Neighbor on iPhone with GeoLocation">
+
+
+
+<meta name="twitter:description" content="If you only do what you can do, you will never be more than you are now">
+
+
+<!-- end of Twitter cards -->
+
+<!-- Web Monetization | Interledger -->
+<meta name="monetization" content="$ilp.uphold.com/6NxbkHNq9N84">
+<meta name="monetization" content="$twitter.xrptipbot.com/laoazhang" />
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Find Your Tweeting Neighbor on iPhone with GeoLocation">
+<meta property="og:description" content="If you only do what you can do, you will never be more than you are now">
+<meta property="og:url" content="https://laoazhang.cn/blog/2009/06/21/find-your-tweeting-neighbor-on-iphone-with-geolocation/">
+<meta property="og:site_name" content="Laoazhang! Blog">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="I-NDFBl5t1P9fqHmRNZhwu8OOHmwW4HADPiOr_r16cE">
+
+
+
+<link rel="canonical" href="https://laoazhang.cn/blog/2009/06/21/find-your-tweeting-neighbor-on-iphone-with-geolocation/">
+<link href="https://laoazhang.cn/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/main.min.css">
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/ie.min.css">
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://laoazhang.cn/assets/js/vendor/modernizr/modernizr.js"></script>
+
+<!-- Icons -->
+
+<!-- favicon -->
+<link rel="shortcut icon" href="https://laoazhang.cn/assets/ico/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://laoazhang.cn/assets/ico/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://laoazhang.cn/assets/ico/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://laoazhang.cn/assets/ico/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://laoazhang.cn/assets/ico/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="article" itemscope itemtype="https://schema.org/WebPage">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="https://laoazhang.cn/index.html">Laoazhang.cn</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+		    <ul>
+		        
+				<li><a href="https://laoazhang.cn/about" >About</a></li>
+		        
+				<li><a href="https://laoazhang.cn/blog" >Archive</a></li>
+		        
+				<li><a href="https://laoazhang.cn/presentations" >Preso</a></li>
+		        
+				<li><a href="https://laoazhang.cn/doodles" >Sketch Notes</a></li>
+		        
+				<li><a href="https://codepen.io/laoazhang" target="_blank">My CodePen</a></li>
+		        
+		        <li><i class="icon-feed"></i> <a href="https://laoazhang.cn/feed.xml" title="Atom/RSS feed">Feed</a>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+<header role="banner">
+</header>
+
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Blog">
+  <div class="article-author-side">
+  	<img src="https://laoazhang.cn/assets/images/avatar.jpg" class="bio-photo" alt="laoazhang">
+    <h3>laoazhang</h3>
+<p class="bio">An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.</p>
+<a href="https://twitter.com/laoazhang" class="author-social" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+<a href="https://facebook.com/laoazhang" class="author-social" target="_blank"><i class="icon-facebook"></i> Facebook</a>
+
+<a href="https://linkedin.com/in/laoazhang" class="author-social" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>
+<a href="https://instagram.com/laoazhang" class="author-social" target="_blank"><i class="icon-instagram"></i> Instagram</a>
+<a href="https://github.com/laoazhang" class="author-social" target="_blank"><i class="icon-github"></i> Github</a>
+
+
+
+
+        <p class="license">
+      
+    </p>
+
+  </div>
+
+  <article itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+    <div class="headline-wrap">
+      
+      <time datetime="2009-06-21T00:00:00-07:00" itemprop="datePublished"><i class="icon-calendar"></i> June 21, 2009</time>
+
+      
+      <h1 itemprop="name">Find Your Tweeting Neighbor on iPhone with GeoLocation</h1>
+      <h2></h2>
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap" itemprop="text">
+      <p><img src="/assets/images/wp-content/misc/neighbortweet.png" alt="screenshot" /></p>
+
+<p>iPhone OS 3.0 is now available, and developers can take advantage of the newly introduced <strong>geolocation</strong> feature in Safari browser.</p>
+
+<p>To try it out quickly, I used Twitter Search API again to create a tiny test app called, <a href="http://girliemac.com/geo" target="_blank"></a>NeighborTweet&lt;/a&gt;, which enable you to find out who are tweeting in your neighborhood. Basically, what it does is that obtain your location, and pass the latitude and longitude data to Twitter search and display the result tweets.</p>
+
+<p>Try it out on your iPhone with:<br />
+Short URL <a href="http://girliemac.com/geo" target="_blank"></a>http://bit.ly/K0ZaE&lt;/a&gt;<br />
+or<br />
+&lt;a href=http://qrcode.kaywa.com/img.php?s=8&#038;d=http%3A%2F%2Fgirliemac.com%2Fgeo”&gt;This QR Code&lt;/a&gt; with scanning app like BeeTagg.</p>
+
+<p>If you are interested in learning more on Twitter search API and geocode, please read <a href="http://apiwiki.twitter.com/Twitter-Search-API-Method%3A-search" target="_blank">Twitter Wiki</a>.</p>
+
+<p>OK, now here’s the code.<br />
+To find out your location with Geolocation class is simple – you just call <code class="language-plaintext highlighter-rouge">getCurrentPosition()</code> method. This initiates an asynchronous request to detect the user’s position.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nf">getCurrentPosition</span><span class="p">(</span><span class="nx">someFunction</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Get latitude and longitude, by using <code class="language-plaintext highlighter-rouge">coords</code> instance:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">latitude</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">;</span>
+<span class="nx">longitude</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Here’s an actual code I used to create the sample app:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nf">getCurrentPosition</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="nf">callback</span><span class="p">(</span><span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">,</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">);</span>  
+  <span class="p">});</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+  <span class="nf">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">Geolocation services are not supported by your browser.</span><span class="dl">"</span><span class="p">);</span>  
+<span class="p">}</span> 
+
+<span class="kd">function</span> <span class="nf">callback</span><span class="p">(</span><span class="nx">lat</span><span class="p">,</span><span class="nx">lon</span><span class="p">){</span>
+  <span class="c1">// twitter search json-p callback</span>
+  <span class="kd">var</span> <span class="nx">geocode</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">&amp;#038;geocode=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">lat</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">%2C</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">lon</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">%2C1mi</span><span class="dl">"</span><span class="p">;</span> 
+  <span class="kd">var</span> <span class="nx">fullUrl</span> <span class="o">=</span> <span class="nx">url</span> <span class="o">+</span> <span class="nx">geocode</span><span class="p">;</span>   
+  <span class="p">...</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">http://search.twitter.com/search.json?callback=getTweets</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nf">getTweets</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// display json data</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<h4 id="geolocation-references">Geolocation References:</h4>
+
+<ul>
+  <li><a href="http://developer.apple.com/safari/library/documentation/AppleApplications/Reference/SafariWebContent/GettingGeographicalLocations/GettingGeographicalLocations.html" target="_blank">Safari Reference Library – Getting Geographic Locations</a> – Apple Developer Connection</li>
+  <li><a href="https://developer.mozilla.org/En/Using_geolocation" target="_blank">Using geolocation</a> – Mozilla Developer Center</li>
+  <li><a href="http://www.w3.org/TR/geolocation-API/" target="_blank">Geolocation API Specification</a> – W3C Working Draft</li>
+</ul>
+
+<h4 id="more-references">More References:</h4>
+
+<ul>
+  <li><a href="http://apiwiki.twitter.com/Twitter-Search-API-Method%3A-search" target="_blank">Twitter Search API Wiki</a></li>
+  <li><a href="http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/" target="_blank">Remote JSON – JSONP</a></li>
+</ul>
+
+
+      <hr>
+
+      <!-- Pagination -->
+      <ul class="pagination">
+	      
+	        <li class="prev"><a href="/blog/2009/06/16/tweettrenddunno-played-with-apis/" rel="prev">&larr; TweetTrendDunno &#8211; Played with APIs</a></li>
+	      
+	      
+	        <li class="next"><a href="/blog/2009/07/16/finally-the-official-mojo-sdk-for-all/" rel="next">Finally, the official Mojo SDK for all! &rarr;</a></li>
+	      
+	  </ul>
+
+      <hr style="visibility:hidden;">
+
+      <!-- Categories -->
+      
+	  <ul class="categories">
+	      <li><i class="icon-drawer"></i></li>
+	      
+
+	      
+		    
+		    	<li data-size="44"><a href="/categories/#Dev">
+		    		Dev
+		    	</a></li>
+		    
+		    	<li data-size="15"><a href="/categories/#Firefox">
+		    		Firefox
+		    	</a></li>
+		    
+		    	<li data-size="34"><a href="/categories/#iPhone">
+		    		iPhone
+		    	</a></li>
+		    
+		    	<li data-size="16"><a href="/categories/#Sandbox">
+		    		Sandbox
+		    	</a></li>
+		    
+		    	<li data-size="2"><a href="/categories/#Twitter">
+		    		Twitter
+		    	</a></li>
+		    
+		    	<li data-size="33"><a href="/categories/#WebKit">
+		    		WebKit
+		    	</a></li>
+		    
+		  
+	      
+
+	  </ul>
+	  
+
+	  <!-- Disqus -->
+	      <div id="disqus_thread" style="margin-top: 3em"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'laoazhang'; // required: replace example with your forum shortname
+				
+
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#main -->
+
+<footer>
+  <small class="copyright">
+    <span>&copy; 2024 laoazhang. Powered by <a href="http://jekyllrb.com">Jekyll</a> with modified <em>Minimal Mistakes</em> theme. Hosted on <a href="http://github.com">Github</a>.
+  </small>
+</footer>
+
+<script src="https://laoazhang.cn/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-2635445-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script>
+
+</script>
+
+</body>
+</html>

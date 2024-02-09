@@ -1,0 +1,401 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Doodle with Strangers! Multi-User HTML5 Canvas with PubNub API &#8211; Laoazhang! Blog</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- Twitter cards -->
+<meta name="twitter:site"    content="@laoazhang">
+<meta name="twitter:creator" content="@laoazhang">
+
+
+<meta name="twitter:card"  content="summary">
+<meta name="twitter:image" content="https://laoazhang.cn/assets/images/avatar.jpg">
+
+
+
+<meta name="twitter:title"   content="Doodle with Strangers! Multi-User HTML5 Canvas with PubNub API">
+
+
+
+<meta name="twitter:description" content="If you only do what you can do, you will never be more than you are now">
+
+
+<!-- end of Twitter cards -->
+
+<!-- Web Monetization | Interledger -->
+<meta name="monetization" content="$ilp.uphold.com/6NxbkHNq9N84">
+<meta name="monetization" content="$twitter.xrptipbot.com/laoazhang" />
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Doodle with Strangers! Multi-User HTML5 Canvas with PubNub API">
+<meta property="og:description" content="If you only do what you can do, you will never be more than you are now">
+<meta property="og:url" content="https://laoazhang.cn/blog/2014/09/06/pubnub/">
+<meta property="og:site_name" content="Laoazhang! Blog">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="I-NDFBl5t1P9fqHmRNZhwu8OOHmwW4HADPiOr_r16cE">
+
+
+
+<link rel="canonical" href="https://laoazhang.cn/blog/2014/09/06/pubnub/">
+<link href="https://laoazhang.cn/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/main.min.css">
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/ie.min.css">
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://laoazhang.cn/assets/js/vendor/modernizr/modernizr.js"></script>
+
+<!-- Icons -->
+
+<!-- favicon -->
+<link rel="shortcut icon" href="https://laoazhang.cn/assets/ico/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://laoazhang.cn/assets/ico/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://laoazhang.cn/assets/ico/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://laoazhang.cn/assets/ico/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://laoazhang.cn/assets/ico/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="article" itemscope itemtype="https://schema.org/WebPage">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="https://laoazhang.cn/index.html">Laoazhang.cn</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+		    <ul>
+		        
+				<li><a href="https://laoazhang.cn/about" >About</a></li>
+		        
+				<li><a href="https://laoazhang.cn/blog" >Archive</a></li>
+		        
+				<li><a href="https://laoazhang.cn/presentations" >Preso</a></li>
+		        
+				<li><a href="https://laoazhang.cn/doodles" >Sketch Notes</a></li>
+		        
+				<li><a href="https://codepen.io/laoazhang" target="_blank">My CodePen</a></li>
+		        
+		        <li><i class="icon-feed"></i> <a href="https://laoazhang.cn/feed.xml" title="Atom/RSS feed">Feed</a>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+<header role="banner">
+</header>
+
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Blog">
+  <div class="article-author-side">
+  	<img src="https://laoazhang.cn/assets/images/avatar.jpg" class="bio-photo" alt="laoazhang">
+    <h3>laoazhang</h3>
+<p class="bio">An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.</p>
+<a href="https://twitter.com/laoazhang" class="author-social" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+<a href="https://facebook.com/laoazhang" class="author-social" target="_blank"><i class="icon-facebook"></i> Facebook</a>
+
+<a href="https://linkedin.com/in/laoazhang" class="author-social" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>
+<a href="https://instagram.com/laoazhang" class="author-social" target="_blank"><i class="icon-instagram"></i> Instagram</a>
+<a href="https://github.com/laoazhang" class="author-social" target="_blank"><i class="icon-github"></i> Github</a>
+
+
+
+
+        <p class="license">
+      
+    </p>
+
+  </div>
+
+  <article itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+    <div class="headline-wrap">
+      
+      <time datetime="2014-09-06T00:00:00-07:00" itemprop="datePublished"><i class="icon-calendar"></i> September 06, 2014</time>
+
+      
+      <h1 itemprop="name">Doodle with Strangers! Multi-User HTML5 Canvas with PubNub API</h1>
+      <h2></h2>
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap" itemprop="text">
+      <p>Note: I originally wrote this article for <a href="http://www.pubnub.com/blog/multiuser-draw-html5-canvas-tutorial/">PubNub Blog</a>, but I am re-posting it with a bit more personal touches here at girliemac.com.</p>
+
+<p>Well, first of all, I left Nokia for the second time. It has been interesting two years at Nokia Sunnyvale office. One of the best accomplishments there is becoming an open web advocate and worked with W3C while I was there.</p>
+
+<p>Now, I joined a San Francisco startup, called <a href="http://www.pubnub.com">PubNub</a>, which provides data streaming network. This is quite a change for my career because I have been exclusively working for mobile space, and this is the first time working outside of the industory since 2005.
+Playing with data is fun, and I thought using the data with <em>Internet of Things (IoT)</em> may be more fun, too. Well, I am not really hardware savvy, so I will need to learn more about it.</p>
+
+<hr />
+
+<p>Yep, I am still a mobile geek, and an open web advocate at heart, naturally my first project at PubNub was about HTML5 web app (that of course supports touch events!). So here’s the digest version of my article. <a href="http://www.pubnub.com/blog/multiuser-draw-html5-canvas-tutorial/">For full article, please read it on PubNub</a>!</p>
+
+<p><img src="/assets/images/articles/2014/09/doodle-realtime.gif" alt="Screencast" title="CoDoodler Screencast" /></p>
+
+<p>This screencast is an actual screencast that I took while some total strangers on the InterWeb were doodling. Just about the time my free version of RecordIt terminated recording, the last person started drwaing “Teh Boobs” <em>[sic] on purpose, supposedly!</em></p>
+
+<p>OK, so this tutorial shows you how to create a very simple doodling web app that allows multiple users draw on the canvas at the same time, using PubNub realtime JavaScript API.</p>
+
+<p>Try this <a href="http://pubnub.github.io/codoodler/">demo</a> first, and continue reading the article and view the <a href="https://github.com/pubnub/codoodler">entire source code</a> on github and the <a href="http://codepen.io/girliemac/pen/Lxiwm">simplified code</a> on Codepen to follow the basic tutorial to fork and tweak by yourself.</p>
+
+<h2 id="creating-basic-interactive-drawing-with-canvas">Creating Basic Interactive Drawing with Canvas</h2>
+
+<p>Let’s create a drawing canvas.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;canvas id="drawCanvas" width="800" height="600"&gt;&lt;/canvas&gt;
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var canvas = document.getElementById('drawCanvas');
+var ctx = canvas.getContext('2d');
+</code></pre></div></div>
+
+<p>Now, take a user input to make the canvas drawable. This is how it works-</p>
+
+<p>Free-drawing action is initiated when a user clicked on the canvas. A line is drawn dynamically as long as the user is holding the mouse down, and ends when it is released.</p>
+
+<p>Let’s create some functions, which should be called upon the mouse events on canvas. The events to be observed are <code class="language-plaintext highlighter-rouge">mousedown</code>, <code class="language-plaintext highlighter-rouge">mousemove</code>, and <code class="language-plaintext highlighter-rouge">mouseup</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">canvas</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mousedown</span><span class="dl">'</span><span class="p">,</span> <span class="nx">startDraw</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">canvas</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mousemove</span><span class="dl">'</span><span class="p">,</span> <span class="nx">draw</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">canvas</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseup</span><span class="dl">'</span><span class="p">,</span> <span class="nx">endDraw</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+<p>To include touch and pointer events support for touch-screen devices, read my old article, <a href="http://girliemac.com/blog/2013/04/17/touchy-feely-with-dom-events-rethinking-cross-device-user-interaction/">Touchy-Feely with DOM Events: Rethinking Cross-Device User Interaction</a>.</p>
+
+<p>Now, you are going to write a <em>draw</em> function, which traces the mouse path by collecting the canvas coordinates into an array, then starts drawing the path on canvas with <code class="language-plaintext highlighter-rouge">beginPath()</code> method, connect each coordinate with <code class="language-plaintext highlighter-rouge">lineTo()</code>, and <code class="language-plaintext highlighter-rouge">stroke()</code> to complete drawing the path, while a flag, <code class="language-plaintext highlighter-rouge">isActive</code> is set <code class="language-plaintext highlighter-rouge">true</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// create a flag</span>
+<span class="kd">var</span> <span class="nx">isActive</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="c1">// array to collect coordinates</span>
+<span class="kd">var</span> <span class="nx">plots</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="kd">function</span> <span class="nf">draw</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isActive</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+  <span class="c1">// cross-browser canvas coordinates</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetX</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerX</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetY</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerY</span> <span class="o">-</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">;</span>
+ 
+  <span class="nx">plots</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span><span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="nx">y</span><span class="p">});</span>
+  
+  <span class="nf">drawOnCanvas</span><span class="p">(</span><span class="nx">plots</span><span class="p">);</span>
+  
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Connecting all the (x, y) coordinates and draw a line by using canvas methods.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">drawOnCanvas</span><span class="p">(</span><span class="nx">color</span><span class="p">,</span> <span class="nx">plots</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nf">beginPath</span><span class="p">();</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nf">moveTo</span><span class="p">(</span><span class="nx">plots</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">x</span><span class="p">,</span> <span class="nx">plots</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">y</span><span class="p">);</span>
+ 
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">plots</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nf">lineTo</span><span class="p">(</span><span class="nx">plots</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">x</span><span class="p">,</span> <span class="nx">plots</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">y</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nf">stroke</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Write other two functions to toggle the flag. Also empty the array after each line is drawn.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">startDraw</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">isActive</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+	
+<span class="kd">function</span> <span class="nf">endDraw</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">isActive</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  
+  <span class="c1">// empty the array</span>
+  <span class="nx">plots</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="p">}</span> 
+</code></pre></div></div>
+
+<p>Yay, you just have create a very simple drawing web app! Go on to the next step to make it even more interactive.</p>
+
+<p><img src="http://girliemac.com/assets/images/articles/2014/09/canvas-draw.png" alt="simple draw" title="simple draw" /></p>
+
+<h2 id="making-it-collaborative-with-multiple-users">Making It Collaborative with Multiple Users</h2>
+
+<p>Here’s the fun part- you are going to make it as a multi-user app.</p>
+
+<p>This is where you are going to use <a href="http://www.pubnub.com">PubNub</a> APIs. You don’t need to learn anything special here as long as you’re comfortable with JavaScript. Not even WebSocket knowledge, or node.js.</p>
+
+<p>OK, so you can make it collabolative by <em>publishing</em> and <em>subscribing</em> the drawing path to data stream. Get your <a href="https://admin.pubnub.com/">PubNub API keys</a> ready, if you don’t have one yet, <a href="http://www.pubnub.com/get-started/">sign up</a> to get your own unique keys.</p>
+
+<p>When you are ready, include the JavaScript libraries in your HTML to begin.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://cdn.pubnub.com/pubnub.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Initialize the API.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">my-draw-demo</span><span class="dl">'</span><span class="p">;</span>
+ 
+<span class="kd">var</span> <span class="nx">pubnub</span> <span class="o">=</span> <span class="nx">PUBNUB</span><span class="p">.</span><span class="nf">init</span><span class="p">({</span>
+	<span class="na">publish_key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your-publish-key</span><span class="dl">'</span><span class="p">,</span>
+	<span class="na">subscribe_key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your-subscribe-key</span><span class="dl">'</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="publish-and-subscribe">Publish and Subscribe</h3>
+
+<p>In the last step, you have created an array that hold all canvas coordinates. In this step, you are going to send one user’s drawing path data to PubNub network, also receive path data from other users.</p>
+
+<p><img src="http://girliemac.com/assets/images/articles/2014/09/publish-subscribe.png" alt="Publish and Subscribe" title="PubNub Data Stream" /></p>
+
+<p>To send data, all you have to do is broadcast the array to the channel with one of the data stream APIs, <code class="language-plaintext highlighter-rouge">publish()</code>. Simply add these lines of code in your <code class="language-plaintext highlighter-rouge">endDraw()</code> function, just before emptying array.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pubnub</span><span class="p">.</span><span class="nf">publish</span><span class="p">({</span>
+    <span class="na">channel</span><span class="p">:</span> <span class="nx">channel</span><span class="p">,</span>
+    <span class="na">message</span><span class="p">:</span> <span class="p">{</span> 
+    	<span class="na">plots</span><span class="p">:</span> <span class="nx">plots</span> <span class="c1">// your array goes here</span>
+    <span class="p">}</span> 
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>To retrieve the published data, you simply need <code class="language-plaintext highlighter-rouge">subscribe()</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pubnub</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">({</span>
+	<span class="na">channel</span><span class="p">:</span> <span class="nx">channel</span><span class="p">,</span>
+  	<span class="na">callback</span><span class="p">:</span> <span class="nx">drawFromStream</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>Once you successfully retrieve the data object from the stream, call the callback function to draw lines from the received array data on canvas, just like you did in the last step.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">drawFromStream</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">message</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>		
+  	
+  	<span class="nx">ctx</span><span class="p">.</span><span class="nf">beginPath</span><span class="p">();</span>
+  	<span class="nf">drawOnCanvas</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">plots</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ta-da, you just have create a very simple multi-user canvas app!</p>
+
+<p>If you are interested in, read on the entire tutorial, at <a href="http://www.pubnub.com/blog/multiuser-draw-html5-canvas-tutorial/">PubNub Blog</a>!</p>
+
+
+      <hr>
+
+      <!-- Pagination -->
+      <ul class="pagination">
+	      
+	        <li class="prev"><a href="/blog/2014/07/28/devicemode/" rel="prev">&larr; Responsive Web Made Easier with Chrome DevTools Device Mode</a></li>
+	      
+	      
+	        <li class="next"><a href="/blog/2015/05/04/hardware-hacking-for-javascript-developers/" rel="next">Hardware Hacking for JavaScript Peeps- How I Got My Hands on Breadboards and Resistors &rarr;</a></li>
+	      
+	  </ul>
+
+      <hr style="visibility:hidden;">
+
+      <!-- Categories -->
+      
+	  <ul class="categories">
+	      <li><i class="icon-drawer"></i></li>
+	      
+
+	      
+		    
+		    	<li data-size="15"><a href="/categories/#dev">
+		    		dev
+		    	</a></li>
+		    
+		    	<li data-size="5"><a href="/categories/#pubnub">
+		    		pubnub
+		    	</a></li>
+		    
+		    	<li data-size="1"><a href="/categories/#html5">
+		    		html5
+		    	</a></li>
+		    
+		    	<li data-size="5"><a href="/categories/#JavaScript">
+		    		JavaScript
+		    	</a></li>
+		    
+		  
+	      
+
+	  </ul>
+	  
+
+	  <!-- Disqus -->
+	      <div id="disqus_thread" style="margin-top: 3em"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'laoazhang'; // required: replace example with your forum shortname
+				
+
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#main -->
+
+<footer>
+  <small class="copyright">
+    <span>&copy; 2024 laoazhang. Powered by <a href="http://jekyllrb.com">Jekyll</a> with modified <em>Minimal Mistakes</em> theme. Hosted on <a href="http://github.com">Github</a>.
+  </small>
+</footer>
+
+<script src="https://laoazhang.cn/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-2635445-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script>
+
+</script>
+
+</body>
+</html>

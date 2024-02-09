@@ -1,0 +1,644 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Creating a Simple Facebook Messenger AI Bot with API.ai in Node.js &#8211; Laoazhang! Blog</title>
+<meta name="description" content="My tutorial on how to build a Facebook Messenger bot">
+<meta name="keywords" content="">
+
+<!-- Twitter cards -->
+<meta name="twitter:site"    content="@laoazhang">
+<meta name="twitter:creator" content="@laoazhang">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://laoazhang.cn//assets/images/articles/2017/01/cover-facebook-apiai-bot.png">
+
+
+
+<meta name="twitter:title"   content="Creating a Simple Facebook Messenger AI Bot with API.ai in Node.js">
+
+
+
+<meta name="twitter:description" content="My tutorial on how to build a Facebook Messenger bot">
+
+
+<!-- end of Twitter cards -->
+
+<!-- Web Monetization | Interledger -->
+<meta name="monetization" content="$ilp.uphold.com/6NxbkHNq9N84">
+<meta name="monetization" content="$twitter.xrptipbot.com/laoazhang" />
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Creating a Simple Facebook Messenger AI Bot with API.ai in Node.js">
+<meta property="og:description" content="My tutorial on how to build a Facebook Messenger bot">
+<meta property="og:url" content="https://laoazhang.cn/blog/2017/01/06/facebook-apiai-bot-nodejs/">
+<meta property="og:site_name" content="Laoazhang! Blog">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="I-NDFBl5t1P9fqHmRNZhwu8OOHmwW4HADPiOr_r16cE">
+
+
+
+<link rel="canonical" href="https://laoazhang.cn/blog/2017/01/06/facebook-apiai-bot-nodejs/">
+<link href="https://laoazhang.cn/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/main.min.css">
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/ie.min.css">
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://laoazhang.cn/assets/js/vendor/modernizr/modernizr.js"></script>
+
+<!-- Icons -->
+
+<!-- favicon -->
+<link rel="shortcut icon" href="https://laoazhang.cn/assets/ico/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://laoazhang.cn/assets/ico/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://laoazhang.cn/assets/ico/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://laoazhang.cn/assets/ico/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://laoazhang.cn/assets/ico/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="article" itemscope itemtype="https://schema.org/WebPage">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="https://laoazhang.cn/index.html">Laoazhang.cn</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+		    <ul>
+		        
+				<li><a href="https://laoazhang.cn/about" >About</a></li>
+		        
+				<li><a href="https://laoazhang.cn/blog" >Archive</a></li>
+		        
+				<li><a href="https://laoazhang.cn/presentations" >Preso</a></li>
+		        
+				<li><a href="https://laoazhang.cn/doodles" >Sketch Notes</a></li>
+		        
+				<li><a href="https://codepen.io/laoazhang" target="_blank">My CodePen</a></li>
+		        
+		        <li><i class="icon-feed"></i> <a href="https://laoazhang.cn/feed.xml" title="Atom/RSS feed">Feed</a>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+<header role="banner">
+</header>
+
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Blog">
+  <div class="article-author-side">
+  	<img src="https://laoazhang.cn/assets/images/avatar.jpg" class="bio-photo" alt="laoazhang">
+    <h3>laoazhang</h3>
+<p class="bio">An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.</p>
+<a href="https://twitter.com/laoazhang" class="author-social" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+<a href="https://facebook.com/laoazhang" class="author-social" target="_blank"><i class="icon-facebook"></i> Facebook</a>
+
+<a href="https://linkedin.com/in/laoazhang" class="author-social" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>
+<a href="https://instagram.com/laoazhang" class="author-social" target="_blank"><i class="icon-instagram"></i> Instagram</a>
+<a href="https://github.com/laoazhang" class="author-social" target="_blank"><i class="icon-github"></i> Github</a>
+
+
+
+
+        <p class="license">
+      
+    </p>
+
+  </div>
+
+  <article itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+    <div class="headline-wrap">
+      
+      <time datetime="2017-01-06T00:00:00-08:00" itemprop="datePublished"><i class="icon-calendar"></i> January 06, 2017</time>
+
+      
+      <h1 itemprop="name">Creating a Simple Facebook Messenger AI Bot with API.ai in Node.js</h1>
+      <h2></h2>
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap" itemprop="text">
+      <p><img src="/assets/images/articles/2017/01/cover-facebook-apiai-bot.png" alt="Facebook Messenger Bot with api.ai" /></p>
+
+<p>Hey, happy new year!!!</p>
+
+<p>Previously, I created a <a href="http://www.girliemac.com/slack-httpstatuscats/">HTTP Status Cats bot for Slack</a> (and its tutorial on <a href="https://medium.com/@girlie_mac/creating-a-slack-command-bot-from-scratch-with-node-js-distribute-it-25cf81f51040#.12dzr1mx1">Medium</a>), and this time I tried with <strong>Facebook Messenger</strong> with some interesting 3rd party APIs, and I decide to give <strong>API.ai</strong> a try.</p>
+
+<p>As you may have heard of, API.ai, which recently acquired by Google, provides a conversational platform for natural language processing and it allows us to create bots easily.</p>
+
+<p>Writing apps with the services aren’t hard, however it requires some time reading the docs to figure out how to set them up, so I would like to share my experiences as this tutorial so hopefully you can write your bot in less time.</p>
+
+<p><img src="https://raw.githubusercontent.com/girliemac/fb-apiai-bot-demo/master/public/images/fb-bot.gif" alt="messenger bot" /></p>
+
+<p>There are two major parts:</p>
+
+<ol>
+  <li>Setting up a Facebook Messenger App and writing the webhook</li>
+  <li>Using API.ai Small Talk domain and creating a custom Intents</li>
+</ol>
+
+<p>My step-by-step instruction uses Node.js, so if you’d like to follow the how-to, make sure <a href="https://nodejs.org">Node.js</a> is installed on your machine.</p>
+
+<p><a href="https://github.com/girliemac/fb-apiai-bot-demo/tree/tutorial-01"><strong>The source code</strong></a> (on <em>tutorial-01</em> branch) is on GitHub.</p>
+
+<p>*(Updated on Jan 9: The bot has been approved by Facebook so you can try the bot!) *
+<strong>Live Demo</strong> -  Scan the code below (the one looks sort of like a QR code) from the Messenger App on mobile, or access on m.me/tomomiBot from browser.</p>
+
+<p><img src="https://raw.githubusercontent.com/girliemac/fb-apiai-bot-demo/master/public/images/messenger-scan-code.png" alt="Facebook scan code" /></p>
+
+<h2 id="1-developing-a-facebook-messenger-app">1. Developing a Facebook Messenger App</h2>
+
+<p>Before configuring your Messenger app on Facebook Developer, let’s create a bare minimum webhook with Node.js to get started.</p>
+
+<h3 id="setting-up-a-temporary-webhook-endpoint-with-ngrok">Setting Up a Temporary Webhook Endpoint with ngrok</h3>
+
+<p>I choose <strong>ngrok</strong> to serves a localhost to a public URL because it is simple and easy to use. This URL will be used as a Messenger webhook endpoint during the development, so you don’t need to deploy to a server until the app is completed.</p>
+
+<p>Download <a href="https://ngrok.com/">ngrok</a>, install it on your machine, and run with a port number, let’s use 5000:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ngrok http 5000
+</code></pre></div></div>
+
+<p>When you start ngrok, it will display a public URL of your tunnel in the terminal. We will need the URL later when setting up the Facebook app. (In the screenshot, the URL is <code class="language-plaintext highlighter-rouge">https://47ba4dd4.ngrok.io</code>)</p>
+
+<p><img src="/assets/images/articles/2017/01/ngrok.png" alt="ngrok" /></p>
+
+<h3 id="writing-a-webhook-with-expressjs">Writing a Webhook with Express.js</h3>
+
+<p>Create your app directory and set up your Node.js app:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm init
+</code></pre></div></div>
+
+<p>Once you configure your app, install <strong>Express</strong> and <strong>body-parser</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install express body-parser --save
+</code></pre></div></div>
+
+<p>Let’s create a <code class="language-plaintext highlighter-rouge">webhook.js</code>, and instantiate express and listen the server to port 5000, or whatever the port you have set with ngrok:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">body-parser</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nf">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nf">json</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nf">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">app</span><span class="p">.</span><span class="nf">listen</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">5000</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Express server listening on port %d in %s mode</span><span class="dl">'</span><span class="p">,</span> <span class="nx">server</span><span class="p">.</span><span class="nf">address</span><span class="p">().</span><span class="nx">port</span><span class="p">,</span> <span class="nx">app</span><span class="p">.</span><span class="nx">settings</span><span class="p">.</span><span class="nx">env</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Now, create HTTP GET and POST route method to handle the command:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* For Facebook Validation */</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/webhook</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="dl">'</span><span class="s1">hub.mode</span><span class="dl">'</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="dl">'</span><span class="s1">hub.verify_token</span><span class="dl">'</span><span class="p">]</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">tuxedo_cat</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nf">send</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="dl">'</span><span class="s1">hub.challenge</span><span class="dl">'</span><span class="p">]);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">403</span><span class="p">).</span><span class="nf">end</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="cm">/* Handling all messenges */</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/webhook</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">object</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">page</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">entry</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">entry</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">entry</span><span class="p">.</span><span class="nx">messaging</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">message</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nf">end</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>This is how you receive messages to your webhook via Facebook Messenger- All requests should come via <code class="language-plaintext highlighter-rouge">post</code>, while the <code class="language-plaintext highlighter-rouge">GET</code> route is only used at the time you configure your Facebook app.</p>
+
+<p>Where you see the <code class="language-plaintext highlighter-rouge">tuxedo_cat</code>, just use an arbitrary string. You will need later when setting up your Facebook app.</p>
+
+<p>Run the code, and go to the next step.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>node webhooks.js
+</code></pre></div></div>
+
+<h3 id="setting-up-a-facebook-app">Setting Up a Facebook App</h3>
+
+<p>You need a <strong>Facebook Page</strong> to set up your chat bot. Create one from <a href="https://www.facebook.com/pages/create">facebook.com/pages/create</a>. Choose a category, and select a sub category from the dropdown and fill out the required filed. Then click <strong>Get Started</strong>.</p>
+
+<p><img src="/assets/images/articles/2017/01/create-a-page.png" alt="FB Page" /></p>
+
+<p>Then create an app at <a href="https://developers.facebook.com/quickstarts/?platform=web">developers.facebook.com/quickstarts</a>.</p>
+
+<p>Give it a name and click the button, then fill out the required info:</p>
+
+<p><img src="/assets/images/articles/2017/01/create-an-app.png" alt="Create a FB App" /></p>
+
+<p>Once your app is created, follow the steps to configure or skip it to your Dashboard.</p>
+
+<p><img src="/assets/images/articles/2017/01/FB-dashboard.png" alt="Create a FB App" /></p>
+
+<p>Click <strong>Add Product</strong> from the left menu, then choose <strong>Messenger</strong>. Click Get Started.</p>
+
+<p><img src="/assets/images/articles/2017/01/create-an-app-add-product.png" alt="Create a FB App" /></p>
+
+<p>At the <strong>Token Generation</strong>, (1) choose the page you just created from the dropdown menu, and it will generate a token (2) that you will need to include in your node code.</p>
+
+<p>Then, at the <strong>Webhooks</strong>, (3) click the <strong>Setup Webhooks</strong> button:</p>
+
+<p><img src="/assets/images/articles/2017/01/create-an-app-messenger.png" alt="Create a FB App" /></p>
+
+<p>In the dialog, fill out the (1) <strong>Callback URL</strong> with your ngrok URL, (2) the random string for validation (the one you’ve specified in your ‘GET’ route in the <code class="language-plaintext highlighter-rouge">webhook.js</code>), then (3) check <strong>messages</strong>.</p>
+
+<p><img src="/assets/images/articles/2017/01/create-an-app-messenger-webhook.png" alt="Create a FB App" /></p>
+
+<p>Click the <strong>Verify and Save</strong>. If you get a red icon with <strong>x</strong> at the Callback URL, it means the URL is not validated- either the URL is wrong or your node code is not properly running. Otherwise, you are ready to get back to code.</p>
+
+<h3 id="writing-a-super-simple-chat-bot">Writing a Super Simple Chat Bot</h3>
+
+<p>Install <strong>request</strong> to <code class="language-plaintext highlighter-rouge">POST</code> messages:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install </span>request <span class="nt">--save</span>
+</code></pre></div></div>
+
+<p>Continue with your <code class="language-plaintext highlighter-rouge">webhook.js</code>, let’s implement <code class="language-plaintext highlighter-rouge">sendMessage()</code> that simply replies the sender an echo to just test your Messenger bot:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">text</span><span class="p">;</span>
+
+  <span class="nf">request</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://graph.facebook.com/v2.6/me/messages</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">qs</span><span class="p">:</span> <span class="p">{</span><span class="na">access_token</span><span class="p">:</span> <span class="nx">PAGE_ACCESS_TOKEN</span><span class="p">},</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">json</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">recipient</span><span class="p">:</span> <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="nx">sender</span><span class="p">},</span>
+      <span class="na">message</span><span class="p">:</span> <span class="p">{</span><span class="na">text</span><span class="p">:</span> <span class="nx">text</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="nf">function </span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error sending message: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Where you see the <code class="language-plaintext highlighter-rouge">PAGE_ACCESS_TOKEN</code>, use the generated token.</p>
+
+<p>Try running the code. This acts as a very simple bot, which interact the Messenger platform to receive a message and echo the message as the reply- Go to [https://m.me/YOUR-PAGE] and start a conversation. If your the simple bot works correctly, it just replies the exactly what you send:</p>
+
+<p><img src="/assets/images/articles/2017/01/facebook-basic.gif" alt="Simple echo bot" /></p>
+
+<p>Your entry is simply echoed back. This is boring, so let’s use API.ai next to make this conversation more interesting.</p>
+
+<h2 id="2-using-apiai-with-your-facebook-messenger-bot">2. Using API.ai with Your Facebook Messenger Bot</h2>
+
+<p><a href="https://api.ai">API.ai</a> allows developers to integrate your app with the AI system with speech-to-text and natural language processing.</p>
+
+<p>Let’s get started with API.ai by <a href="https://console.api.ai">sigining up</a>.</p>
+
+<p>Once you get your account, create an agent. You can either click the button that says <strong>CREATE AGENT</strong> or from the menu.</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-create-agent.png" alt="Create a FB App" /></p>
+
+<p>Give it a name and fill out the required info:</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-agent-setup.png" alt="Create a FB App" /></p>
+
+<p>Make sure to click the <strong>Save</strong> button on the top every time you make changes.</p>
+
+<h3 id="making-small-talk-with-your-messenger-bot">Making “Small Talk” with your Messenger Bot</h3>
+
+<p>Instead of having your bot just echo you, let’s give it the API.ai’s Small Talk feature. This gives your bot an ability to have simple conversations.</p>
+
+<p>From the left menu (if the menu is not visible, click the “Hamburger menu icon” at the top left to open), click <strong>Domains</strong>, then activate the <strong>Small Talk</strong>.</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-small-talk.png" alt="Create a FB App" /></p>
+
+<p>Once activated, click <strong>View details</strong> then turn on the <em>Fulfillment</em> so that you can later use this feature in your app and customize.</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-small-talk-desc.png" alt="Create a FB App" /></p>
+
+<p>Try the <strong>Console</strong> at the right hand side. You can either speak or type to test the Small Talk domain:</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-console.png" alt="Create a FB App" /></p>
+
+<p>Now let’s use this feature in your bot. You can always come back here to customize the conversations.</p>
+
+<h4 id="using-apiai-with-nodejs">Using API.ai with Node.js</h4>
+
+<p>It is actually possible to integrate API.ai with FB Messenger without programming, however, to make it fully customize in the way you want to interact with your FB app, let’s use the service programmatically.</p>
+
+<p>First, install <a href="https://www.npmjs.com/package/apiai">API.ai node.js library</a>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install </span>apiai
+</code></pre></div></div>
+
+<p>You need your API.ai API key and API secret to use the service with your bot. From the menu, click the “Config” icon to get your API key (“Client access token”):</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-apikey.png" alt="Create a FB App" /></p>
+
+<p>And go back to your <code class="language-plaintext highlighter-rouge">webhook.js</code> and initialize <code class="language-plaintext highlighter-rouge">apiai</code> with the API key:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span><span class="err"> </span><span class="nx">apiaiApp</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">apiai</span><span class="dl">'</span><span class="p">)(</span><span class="nx">CLIENT_ACCESS_TOKEN</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Refer the usage on its <a href="https://www.npmjs.com/package/apiai">npm doc</a>. It is pretty simple- you just pass a text to API.ai, and do something when you get the response (the <code class="language-plaintext highlighter-rouge">response</code> event).</p>
+
+<p>Now, let’s modify the <code class="language-plaintext highlighter-rouge">sendMessage()</code> :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">text</span><span class="p">;</span>
+
+  <span class="kd">let</span> <span class="nx">apiai</span> <span class="o">=</span> <span class="nx">apiaiApp</span><span class="p">.</span><span class="nf">textRequest</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">sessionId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">tabby_cat</span><span class="dl">'</span> <span class="c1">// use any arbitrary id</span>
+  <span class="p">});</span>
+
+  <span class="nx">apiai</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">response</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Got a response from api.ai. Let's POST to Facebook Messenger</span>
+  <span class="p">});</span>
+
+  <span class="nx">apiai</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">apiai</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What the code sample above doing is basically getting the info (passed as a param) sent from a user via Messenger, and pass the text content to API.ai. Once the API.ai returns the answer, the <code class="language-plaintext highlighter-rouge">response</code> event is triggered.</p>
+
+<p>Where you see the <code class="language-plaintext highlighter-rouge">// Got a response…</code> comment in the code sample above, let’s <code class="language-plaintext highlighter-rouge">POST</code> the response to the Messenger API:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="nx">apiai</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">response</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">aiText</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">fulfillment</span><span class="p">.</span><span class="nx">speech</span><span class="p">;</span>
+
+    <span class="nf">request</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://graph.facebook.com/v2.6/me/messages</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">qs</span><span class="p">:</span> <span class="p">{</span><span class="na">access_token</span><span class="p">:</span> <span class="nx">PAGE_ACCESS_TOKEN</span><span class="p">},</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">json</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">recipient</span><span class="p">:</span> <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="nx">sender</span><span class="p">},</span>
+        <span class="na">message</span><span class="p">:</span> <span class="p">{</span><span class="na">text</span><span class="p">:</span> <span class="nx">aiText</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error sending message: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+ <span class="p">});</span>
+</code></pre></div></div>
+
+<p>Now, let’s test your bot. Run the node code, and try sending some messages. If everything is working, you should get replies from the bot:</p>
+
+<p><img src="/assets/images/articles/2017/01/facebook-apiai-smalltalk.gif" alt="Tada! Bot with api.ai" /></p>
+
+<p>Awesome.</p>
+
+<h3 id="making-the-bot-tell-you-weather-condition">Making the Bot Tell You Weather Condition</h3>
+
+<p>When you activate the Small Talk from the <strong>Domains</strong>, you may have noticed there are more presets like Weather and Flight Schedules, etc. To use these services, it looks like you need to send inquiry to their sales peeps.</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-domains.png" alt="api.ai domains" /></p>
+
+<p>However, of course as an engineer, you can always call the 3rd party APIs to add the features by yourself instead of just flipping the switch and pay. So let’s make your bot to tell users the current weather forecast with the <a href="http://openweathermap.org/current">Open Weather Map API</a>.</p>
+
+<p>The goal here is that when a user ask something like “How is the weather in San Francisco?”, your bot will reply with the current weather condition in the given city.</p>
+
+<h4 id="creating-weather-intents">Creating Weather Intents</h4>
+
+<p>First, to customize the conversational user interfaces, you need to understand <a href="https://docs.api.ai/docs/key-concepts">the key concepts</a> of API.ai, especially <strong>Entities</strong> and <strong>Intents</strong> for now.</p>
+
+<p><strong>Intents</strong> represent a mapping between what a user says and what action should be taken by your software. To make your bot reply the user with a weather info, you need to create a specific Intents.</p>
+
+<p>From the menu, go to <strong>Intents</strong> and click the CRETAE INTENT button:</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-intents-00.png" alt="api.ai intents" /></p>
+
+<p>Give it a name, such as <em>weather.city</em>.</p>
+
+<p>Then create some contexts. Enter a phrase like, “How is the weather in San Francisco?”</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-intents-01.png" alt="api.ai intents" /></p>
+
+<p>Select the city name (“San Francisco”), and you will get a popup. What you see here are pre-defined <strong>entities</strong>. There are many entities in the list but what you need here is a collection of cities. So choose <code class="language-plaintext highlighter-rouge">@sys.geo-city</code>. The city name will be highlighted.</p>
+
+<p>Major city names have been provided already so you do not need to create them, however if you need to define special entities that not listed there, such as types of cars, food, etc, you will need to create manually. (I am not covering how to define entities in this article this time!)</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-intents-02.png" alt="api.ai intents" /></p>
+
+<p>Create some more contexts:</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-intents-03.png" alt="api.ai intents" /></p>
+
+<p>Then (1) scroll down to <strong>Action</strong>, and enter “weather”. You need this action name on your node code later. Then (2) at <strong>Response</strong>, enter a default response. Assuming a user ask about the weather without specifying a city, enter something like “Which city?”</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-intents-04.png" alt="api.ai intents" /></p>
+
+<p>Save the Intents, and go to <strong>Fulfillment</strong> from the menu. Enable the webhook, and enter the ngrok URL with a route, let’s call it <code class="language-plaintext highlighter-rouge">/ai</code> and Save:</p>
+
+<p><img src="/assets/images/articles/2017/01/apiai-webhook.png" alt="api.ai intents" /></p>
+
+<h4 id="using-the-3rd-party-api-to-look-up-the-weather">Using the 3rd Party API to Look Up the Weather</h4>
+
+<p>Go to <a href="http://openweathermap.org/">Open Weather Map</a>, and sign up to get the API key. We are going to use the API to fetch a <a href="http://openweathermap.org/current">current weather data</a> for one location.</p>
+
+<p>Let’s just use this REST API with a city name as a param (also, your API key and the temperature unit):</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">restUrl</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">http://api.openweathermap.org/data/2.5/weather?units=imperial&amp;APPID=</span><span class="dl">'</span><span class="o">+</span><span class="nx">WEATHER_API_KEY</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;q=</span><span class="dl">'</span><span class="o">+</span><span class="nx">city</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>In your <code class="language-plaintext highlighter-rouge">webhook.js</code>, create another <code class="language-plaintext highlighter-rouge">POST</code> method route, <code class="language-plaintext highlighter-rouge">/ai</code>. Remember the action name you’ve specified with API.ai console earlier:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/ai</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">action</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">weather</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">city</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">parameters</span><span class="p">[</span><span class="dl">'</span><span class="s1">geo-city</span><span class="dl">'</span><span class="p">];</span>
+    <span class="kd">let</span> <span class="nx">restUrl</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">http://api.openweathermap.org/data/2.5/weather?APPID=</span><span class="dl">'</span><span class="o">+</span><span class="nx">WEATHER_API_KEY</span><span class="o">+</span><span class="dl">'</span><span class="s1">&amp;q=</span><span class="dl">'</span><span class="o">+</span><span class="nx">city</span><span class="p">;</span>
+
+    <span class="nx">request</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">restUrl</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">err</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">weather</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">description</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> and the temperature is </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">json</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">temp</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> ℉</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nf">json</span><span class="p">({</span>
+          <span class="na">speech</span><span class="p">:</span> <span class="nx">msg</span><span class="p">,</span>
+          <span class="na">displayText</span><span class="p">:</span> <span class="nx">msg</span><span class="p">,</span>
+          <span class="na">source</span><span class="p">:</span> <span class="dl">'</span><span class="s1">weather</span><span class="dl">'</span><span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nf">json</span><span class="p">({</span>
+          <span class="na">status</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">code</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+            <span class="na">errorType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">I failed to look up the city name.</span><span class="dl">'</span><span class="p">}});</span>
+      <span class="p">}})</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Make sure to return is as JSON that api.ai will read from this webhook.</p>
+
+<p>Let’s test your bot from Messenger:</p>
+
+<p><img src="/assets/images/articles/2017/01/facebook-apiai-weather.gif" alt="FB Messenger weather bot" /></p>
+
+<p>Yay, now you have your own Messenger bot that chats and answer weather info!</p>
+
+<p>If you deploy your bot, make sure to change your webhook endpoints on both Facebook Developer app setting and API.ai Fulfillment.</p>
+
+<p>I hope you enjoyed the article. Now you can tailor your intents, add more features, and use the training feature for better results to make your bot more interesting!</p>
+
+<h3 id="by-the-way">By the way…</h3>
+
+<p>I am currently working at <a href="https://nexmo.com">Nexmo</a> and we are working on the Chat API, which integrate multiple chat apps including Facebook, WeChat, LINE, etc. So if you have a business with customers from all over the world especially the countries like China where the Great Firewall prevents people to use Facebook, and if you’d like to set up a customer support chat system, you need to support something like WeChat too.</p>
+
+<p>The Nexmo Chat API can connect multiple chat apps all together. Also there is the SMS API too. I will write about the Chat API soon on <a href="https://nexmo.com/blog">Nexmo Blog</a>!</p>
+
+      <hr>
+
+      <!-- Pagination -->
+      <ul class="pagination">
+	      
+	        <li class="prev"><a href="/blog/2016/10/24/slack-command-bot-nodejs/" rel="prev">&larr; Creating a Slack Command Bot from Scratch with Node.js & Distribute It</a></li>
+	      
+	      
+	        <li class="next"><a href="/blog/2017/02/12/filterous2-release/" rel="next">Filterous 2 Photo Manipulation Library is Released! &rarr;</a></li>
+	      
+	  </ul>
+
+      <hr style="visibility:hidden;">
+
+      <!-- Categories -->
+      
+	  <ul class="categories">
+	      <li><i class="icon-drawer"></i></li>
+	      
+
+	      
+		    
+		    	<li data-size="15"><a href="/categories/#dev">
+		    		dev
+		    	</a></li>
+		    
+		    	<li data-size="2"><a href="/categories/#bot">
+		    		bot
+		    	</a></li>
+		    
+		    	<li data-size="1"><a href="/categories/#ai">
+		    		ai
+		    	</a></li>
+		    
+		    	<li data-size="1"><a href="/categories/#facebook">
+		    		facebook
+		    	</a></li>
+		    
+		    	<li data-size="10"><a href="/categories/#javascript">
+		    		javascript
+		    	</a></li>
+		    
+		    	<li data-size="8"><a href="/categories/#node.js">
+		    		node.js
+		    	</a></li>
+		    
+		    	<li data-size="1"><a href="/categories/#api.ai">
+		    		api.ai
+		    	</a></li>
+		    
+		    	<li data-size="2"><a href="/categories/#api">
+		    		api
+		    	</a></li>
+		    
+		  
+	      
+
+	  </ul>
+	  
+
+	  <!-- Disqus -->
+	      <div id="disqus_thread" style="margin-top: 3em"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'laoazhang'; // required: replace example with your forum shortname
+				
+
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#main -->
+
+<footer>
+  <small class="copyright">
+    <span>&copy; 2024 laoazhang. Powered by <a href="http://jekyllrb.com">Jekyll</a> with modified <em>Minimal Mistakes</em> theme. Hosted on <a href="http://github.com">Github</a>.
+  </small>
+</footer>
+
+<script src="https://laoazhang.cn/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-2635445-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script>
+
+</script>
+
+</body>
+</html>

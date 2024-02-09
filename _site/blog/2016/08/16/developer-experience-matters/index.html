@@ -1,0 +1,455 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Developer Experience Matters &#8211; Laoazhang! Blog</title>
+<meta name="description" content="A summary of my talk I gave at DevRel Summit in Seattle">
+<meta name="keywords" content="">
+
+<!-- Twitter cards -->
+<meta name="twitter:site"    content="@laoazhang">
+<meta name="twitter:creator" content="@laoazhang">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://laoazhang.cn//assets/images/articles/2016/08/dx-jamie-comic.jpg">
+
+
+
+<meta name="twitter:title"   content="Developer Experience Matters">
+
+
+
+<meta name="twitter:description" content="A summary of my talk I gave at DevRel Summit in Seattle">
+
+
+<!-- end of Twitter cards -->
+
+<!-- Web Monetization | Interledger -->
+<meta name="monetization" content="$ilp.uphold.com/6NxbkHNq9N84">
+<meta name="monetization" content="$twitter.xrptipbot.com/laoazhang" />
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Developer Experience Matters">
+<meta property="og:description" content="A summary of my talk I gave at DevRel Summit in Seattle">
+<meta property="og:url" content="https://laoazhang.cn/blog/2016/08/16/developer-experience-matters/">
+<meta property="og:site_name" content="Laoazhang! Blog">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="I-NDFBl5t1P9fqHmRNZhwu8OOHmwW4HADPiOr_r16cE">
+
+
+
+<link rel="canonical" href="https://laoazhang.cn/blog/2016/08/16/developer-experience-matters/">
+<link href="https://laoazhang.cn/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/main.min.css">
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" href="https://laoazhang.cn/assets/css/ie.min.css">
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://laoazhang.cn/assets/js/vendor/modernizr/modernizr.js"></script>
+
+<!-- Icons -->
+
+<!-- favicon -->
+<link rel="shortcut icon" href="https://laoazhang.cn/assets/ico/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://laoazhang.cn/assets/ico/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://laoazhang.cn/assets/ico/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://laoazhang.cn/assets/ico/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://laoazhang.cn/assets/ico/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="article" itemscope itemtype="https://schema.org/WebPage">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="https://laoazhang.cn/index.html">Laoazhang.cn</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+		    <ul>
+		        
+				<li><a href="https://laoazhang.cn/about" >About</a></li>
+		        
+				<li><a href="https://laoazhang.cn/blog" >Archive</a></li>
+		        
+				<li><a href="https://laoazhang.cn/presentations" >Preso</a></li>
+		        
+				<li><a href="https://laoazhang.cn/doodles" >Sketch Notes</a></li>
+		        
+				<li><a href="https://codepen.io/laoazhang" target="_blank">My CodePen</a></li>
+		        
+		        <li><i class="icon-feed"></i> <a href="https://laoazhang.cn/feed.xml" title="Atom/RSS feed">Feed</a>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+<header role="banner">
+</header>
+
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Blog">
+  <div class="article-author-side">
+  	<img src="https://laoazhang.cn/assets/images/avatar.jpg" class="bio-photo" alt="laoazhang">
+    <h3>laoazhang</h3>
+<p class="bio">An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.</p>
+<a href="https://twitter.com/laoazhang" class="author-social" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+<a href="https://facebook.com/laoazhang" class="author-social" target="_blank"><i class="icon-facebook"></i> Facebook</a>
+
+<a href="https://linkedin.com/in/laoazhang" class="author-social" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>
+<a href="https://instagram.com/laoazhang" class="author-social" target="_blank"><i class="icon-instagram"></i> Instagram</a>
+<a href="https://github.com/laoazhang" class="author-social" target="_blank"><i class="icon-github"></i> Github</a>
+
+
+
+
+        <p class="license">
+      
+    </p>
+
+  </div>
+
+  <article itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+    <div class="headline-wrap">
+      
+      <time datetime="2016-08-16T00:00:00-07:00" itemprop="datePublished"><i class="icon-calendar"></i> August 16, 2016</time>
+
+      
+      <h1 itemprop="name">Developer Experience Matters</h1>
+      <h2></h2>
+    </div><!--/ .headline-wrap -->
+
+    <div class="article-wrap" itemprop="text">
+      <p><em>I am writing this article based on the short talk I gave at <a href="http://www.devrelsummit.com/">DevRel Summit</a> in Seattle, and it is aimed for my fellow developer advocates, platform engineers, product managers, and CTOs, who work for companies that provide developer platforms, APIs etc. also anybody who advocate their own software / libraries / frameworks</em></p>
+
+<hr />
+<p><img src="/assets/images/articles/2016/08/dx-jamie-comic.jpg" alt="Developer Experience Matters" /></p>
+
+<p>Let’s say, you are working for a company that provides public APIs, or you are an open-source JavaScript library author, who want to attract developers out there to use your products.</p>
+
+<p>When your potential developers, who are in search for a solution for a new project- this can be a large-scale commercial project, or it could be to compete at a hackathon, see your shiny website but has very poorly-designed developer portal (or your open-source project on GitHub may have some stars, but with no README), how does the developer feel? Do they still want to try it out anyway, or keep searching something else and end up choosing your competitor?</p>
+
+<p>I have been working as a developer evangelist, or related positions in Developer Relations for about six years for three (technically four, including acquisition) different companies, to advocate both proprietary and open technologies. From the experiences, what I’ve seen is that developers (including myself) tend to shy away when the API (or platform, services, etc.) is poorly designed, lacks good docs, Get Started guide, or code samples.</p>
+
+<p>This <strong>Developer Experience</strong> is one of the biggest key factors for developers to decide if they use certain technologies to use.</p>
+
+<h2 id="user-experience-and-developer-experience">User Experience and Developer Experience</h2>
+
+<p>Before becoming a developer evangelist, I was working as a developer in Human Interface team for <strong>Palm webOS</strong> mobile platform. Although we didn’t successfully dominate the market, what the team has designed has been inherited to present-era iOS and Android. For example, non-intrusive visual notification system, card views, universal search bar, etc.</p>
+
+<p>My then-teammates has influenced me so much, and it has affected my career and the way of thinking. Since then, I care <strong>usability</strong> and <strong>user-experiences (UX)</strong> for everything - not only software and hardware interface designs, but for coding styles, APIs, and documentations, because I believe UX is also applied to developers, when your <em>users</em> are developers.</p>
+
+<p>According to <a href="https://usability.org">usabilty.gov</a>,</p>
+
+<blockquote>
+  <p>User-Experience (UX) focuses on having a deep understanding of users, what they need, what they value, their abilities, and also their limitations.</p>
+</blockquote>
+
+<p>and I think the statement is still true, when you swap out the word, <em>user</em> to <em>developer</em>:</p>
+
+<blockquote>
+  <p>Developer-Experience (DX) focuses on having a deep understanding of developers, what they need, what they value, their abilities, and also their limitations.</p>
+</blockquote>
+
+<p>Yes, I am suggesting Developer Experience <em>is</em> a type of User Experience!</p>
+
+<h3 id="bad-developer-experience-and-frustrations">Bad Developer Experience and Frustrations</h3>
+
+<p>This is a good example of how not to design- At a gas station, you’ve got a gas pump looks like this, how do you react?</p>
+
+<p><img src="/assets/images/articles/2016/08/gas-pump.jpg" alt="Local Gas Pump by Jared Spool" /></p>
+
+<p><em>(Photo credit: https://flic.kr/p/5ckBZq by Jared Spool. CC-BY-SA)</em></p>
+
+<p>Typically, when a user face such bad user experience, the reactions would be:</p>
+
+<ol>
+  <li>Get confused</li>
+  <li>Make a good guess and fail</li>
+  <li>Frustrated</li>
+  <li>Repeat 2 - 3</li>
+  <li>Totally pissed off</li>
+</ol>
+
+<p>How about if you provide very enigmatic API, sans proper documentations or tutorial, and a developer is trying to figure out how to use the API- How does the developer react?</p>
+
+<p>I think the reactions would be the same as above! The difference is that if you are at a gas station, you are more likely to try again or ask somebody to get your car filled up, while developers are more likely to google around (or ask Twitter followers) then ditch your service for use your competitor’s over the bad developer experiences.</p>
+
+<h2 id="developer-centric-products">Developer-Centric Products</h2>
+
+<p>So, what kinds of products have users who are developers? I tried to come up with a list of “products” that we need to care about developer experience-</p>
+
+<ul>
+  <li>Platforms</li>
+  <li>SDKs &amp; tools</li>
+  <li>APIs</li>
+  <li>Developer website UI/UX, and contents</li>
+  <li>Docs, tutorials, and “Get started” guides</li>
+  <li>Samples on GitHub - code &amp; README</li>
+</ul>
+
+<p>While developer evangelists have works including developer trainings including workshops and conferences, and events like hackathons, here, I only try to define products, and excluding all the direct actions and interaction with developers.</p>
+
+<h3 id="api-designing">API Designing</h3>
+
+<p>API providers do also need to provide SDKs for common / high-demand languages, and sometimes for frameworks. You are losing developers when either SDK or API, as user-interface for developers, are missing.</p>
+
+<p>Also, good API should be intuitive and easy to use, and bad API includes bad naming conventions, bad error messages, inconsistencies, etc. <a href="https://www.youtube.com/watch?v=aAb7hSCtvGw">In his talk, Joshua Bloch stated</a> that:</p>
+
+<ul>
+  <li>API can be among a company’s greatest assets</li>
+  <li>Can also be among company’s greatest liabilities</li>
+  <li>Public APIs are forever</li>
+</ul>
+
+<p>He also tells us to <em>document religiously</em>- good API must have good design and documentation. I am not going to summarize all his talks here, so I recommend you should watch the <a href="(https://www.youtube.com/watch?v=aAb7hSCtvGw)">video</a> by yourself.</p>
+
+<h3 id="api-documentations">API Documentations</h3>
+
+<p>When we are talking about API docs, actually we need to provide more than just API references. Developers expect:</p>
+
+<ul>
+  <li>Reference documentations</li>
+  <li>Getting Started guide</li>
+  <li>Tutorials</li>
+</ul>
+
+<p>While API reference explains every call in the API and parameter, values, etc., other types of docs often provides step-by-step instructions, and copy-and-pasteable code samples, including <em>Hello World</em>.</p>
+
+<p>A rule of thumb of writing these docs is keep everything simple in plain English. Complex docs don’t impress your fellow engineers, but rather repel them. The basic tutorial should be short and simple too, but if you want to explore your creativity like I do, you should provide supplemental tutorials beyond your API docs- Blog, Demo, Showcase, etc.</p>
+
+<h3 id="creative-contents-for-developers">Creative Contents for Developers</h3>
+
+<p>My expertise is providing interesting use cases with code samples and demos. (You can browse my articles on this blog and many other sites!) What I knew and what I’ve learned from my own experiences are that developer experience is good when a doc has these:</p>
+
+<h4 id="meaningful-diagrams">Meaningful Diagrams</h4>
+
+<p>A picture is worth a thousand words - a simple diagram can explain complex idea far better. When I was writing about push notifications gateway for GCM and APNs, I decided to create a diagram to show how it works, rather than writing the whole explanations, and it turns out my readers (and coworkers) really did understand what the device registration meant, and how it works with push notification.</p>
+
+<p>This is an actual screenshot of the blog I wrote for my previous employer, PubNub:</p>
+
+<p><img src="/assets/images/articles/2016/08/screenshot-gcm.png" alt="screenshot of my blog" /></p>
+
+<h4 id="screen-captures">Screen Captures</h4>
+
+<p>A step-by-step instruction in a bullet list helps your developers for sure, but I found they love when the steps are described with actual screenshots. And devs love even more when they are in a single gif animation, which I think is a great example of the <em>TL;DR</em> principal!</p>
+
+<p>This example below is what I created to show hoe to use Chrome DevTools Device Mode. I created for <a href="http://www.girliemac.com/blog/2014/07/28/devicemode/">my own blog</a>, and, later adopted by Google’s Chrome team, and stayed on the official doc for a while.</p>
+
+<p><img src="/assets/images/articles/2014/07/devtools-device-mode-2.gif" alt="screenshot of devtools" /></p>
+
+<h4 id="video-tutorials">Video Tutorials</h4>
+
+<p>Especially, when you are targeting the first-timers, I found video tutorials are quite effective, because N00bs may have no idea where to get started. I don’t blame on them because there is always a first time for everybody.</p>
+
+<p>I created <a href="https://www.youtube.com/watch?v=sC72DCxQrcU">this Johnny-Five video</a> because I was asked by enough numbers of people where to get started with hardware. The tutorial is tageting Node.js engineers who has no prior experiences with hardware engineering. I show electrical parts and explain what they are and how to wire. A cool thing is that the tutorial was introduced on <a href="https://arduino.cc">Arduino</a> official blog, and got a lot of good feedbacks on social media.</p>
+
+<h4 id="more-improvement-for-better-dx">More Improvement for Better DX</h4>
+
+<p>There are more things I try to keep in mind for good DX-</p>
+
+<ul>
+  <li>Publish date should be included, especially because a dev year is like a dog year, where things get outdated pretty quick.</li>
+  <li>No pushy marketing- obnoxious “Sign up now!!!” buttons and popups annoy devs away.</li>
+  <li>Docs and tuts need to have good browsing experiences just like web pages. Always link to references and related pages.</li>
+  <li>Don’t PDF everything. Docs and tuts for developers are not white papers.</li>
+  <li>Provide a place for feedbacks- my last company’s marketing peeps refused to add a comment section on blog, or set up a forum, so in the results, I got comments and questions on random social media everywhere, and my email addresses (work, personal, and wrongly-guessed work email address that eventually forwarded to me.)</li>
+  <li>Cut the BS- if your API is not ready or buggy, state so honestly.</li>
+</ul>
+
+<h2 id="developer-friendliness">Developer-Friendliness</h2>
+
+<p>I stumbled upon this tweet about user-friendliness on the other day-</p>
+
+<p><img src="/assets/images/articles/2016/08/kaz-tweet.png" alt="screenshot of devtools" /></p>
+
+<p>It is interesting to see how the two companies describe the same errors in such different languages.</p>
+
+<p>I was curious how these companies differ in Developer Experience, so I took a look at their API docs, and the results were not surprising. I am pretty sure the product peeps (who worked on the messages) at JIRA and Slack don’t work for the API docs, however the the friendliness of these docs reflect exactly like-</p>
+
+<p>These are documentations for their OAuth authentication-</p>
+
+<p><a href="https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis/jira-rest-api-tutorials/jira-rest-api-example-oauth-authentication">JIRA</a>:</p>
+
+<p><img src="/assets/images/articles/2016/08/jira-doc.png" alt="JIRA OAuth Doc" /></p>
+
+<p><a href="https://api.slack.com/docs/oauth">Slack</a>:</p>
+
+<p><img src="/assets/images/articles/2016/08/slack-doc.png" alt="Slack OAuth Doc" /></p>
+
+<p>This is pretty clear that Slack docs is far more developer-friendly, not because of the cute robot, but the non-authoritative tone, and the way they introduce OAuth (what it is, and how it works) and the diagram, while JIRA doc doesn’t even bother explaining what OAuth is, as if newbie developers are not welcomed.</p>
+
+<p>I wonder if it is more “appropriate” for enterprise companies to be unfriednly to both user and developer…</p>
+
+<h2 id="knowing-your-developers">Knowing Your Developers</h2>
+
+<p>If you interact directly with developers on chat or forum, or work with community managers who do, you probably already have good idea about your developer community.</p>
+
+<p>Another method I adopted from Human Interface team was defining <strong><a href="https://en.wikipedia.org/wiki/Persona_(user_experience)">persona</a></strong> during product development process. In my case, of course it is developer personas. I gather information from registrations, surveys, Stackoverflow, and support team (e.g. What language/SDK a developer use? What kinds of apps they develop?) Also, I get info from sales reps and business development team about actual customer (e.g. size of a client’s company, industry, location, etc.)</p>
+
+<p>I sometimes conduct brainstormings. This is quite effective to generate creative ideas and solutions, as well as team building. I combine the persona and brainstorming to figure our what our developers want.</p>
+
+<p><img src="/assets/images/articles/2016/08/dx-brainstorm.jpg" alt="brainstorming" /></p>
+
+<p>This photo was taken right after the first brainstorming session was done at my previous work. After the session, we sorted the ideas in category and feasibility.</p>
+
+<p>Sure, this does not look like your typical Developer Relations meeting, but I have successfully delivered a lot of good use-cases and tutorials and articles around them. After social media has picked up, the awareness of the virtually unknown company and the products went up.</p>
+
+<h2 id="diversity-and-inclusiveness">Diversity and Inclusiveness</h2>
+
+<p>The majority of developers may be male and understand English, but if you are targeting only the majority, you are still missing out large numbers developers out there.</p>
+
+<p>Inclusivity typically means not to exclude any groups of gender (expression), race, ethnicity, disability, sexual orientation, etc. I am not going to talk too much about the importance of diversity in a workplace in this article, however, I strongly believe when you work at a diverse team, you can definitely reach out more developers, especially because people in general tend to trust somebody who they feel related to. In fact, many of my “fans” are minorities- women, immigrants, speaking English as a second language, etc. (It is very flattering when people tell/tweet/email me they are fan of my works!)</p>
+
+<p>Especially when somebody in your team speak/write something other than English, it would be a huge advantage. I do speak and write Japanese fluently, and in numerous occasions, I have helped sales and other teams when the companies have Japanese clients. I have written blog posts, and spoken at conferences in Tokyo as well. My conference videos and slides on <a href="https://slideshare.net">Slideshare</a> have reached out far larger audiences. I can clearly tell you that it’s not easy for you to get into Asian markets without somebody who knows the languages and cultures well!</p>
+
+<p>Even if your team has no other multi-lingual people or simple has no time to translate, when your organization has successfully support international developers, the community helps you.</p>
+
+<p>For example, <a href="https://dev.opera.com">Dev.Opera</a> publishes their tech blog under Creative Commons, and open-sourced the contents on <a href="https://github.com/operasoftware/devopera">GitHub</a>, where their community can contribute. I have written <a href="https://dev.opera.com/articles/web-notifications-pubnub/">an article in English</a> for Dev.Opera, and the community member has translated it <a href="https://dev.opera.com/articles/ru/web-notifications-pubnub/">in Russian</a>! How awesome is it!</p>
+
+<p><img src="/assets/images/articles/2016/08/devopera-russian.png" alt="translated in Russian" /></p>
+
+<p>It is not easy to acquire fans worldwide, but having a diverse team makes it far easier.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Developer Experiences <em>really</em> matters!</p>
+
+<p>Here’s the slide deck from <a href="http://www.devrelsummit.com/">DevRel Summit</a> :</p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/CdP2J9ci1BP5Gq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe>
+
+<h2 id="epilogue">Epilogue</h2>
+
+<p>Despite my tireless efforts and successful outcomes, my principles of developer evangelism did not align with my former employer’s marketing department that controls the team. When somebody doesn’t care about developers, you have no job there. Well, it has been fun leading the team for a while!</p>
+
+<p>I am joining a company who truly embraces developer experience, so you will hear from me about my new gig pretty soon!</p>
+
+      <hr>
+
+      <!-- Pagination -->
+      <ul class="pagination">
+	      
+	        <li class="prev"><a href="/blog/2016/07/30/arduino-johnny-five-101/" rel="prev">&larr; Arduino with Johnny-Five 101 - Video Tutorial</a></li>
+	      
+	      
+	        <li class="next"><a href="/blog/2016/10/24/slack-command-bot-nodejs/" rel="next">Creating a Slack Command Bot from Scratch with Node.js & Distribute It &rarr;</a></li>
+	      
+	  </ul>
+
+      <hr style="visibility:hidden;">
+
+      <!-- Categories -->
+      
+	  <ul class="categories">
+	      <li><i class="icon-drawer"></i></li>
+	      
+
+	      
+		    
+		    	<li data-size="1"><a href="/categories/#DevRel">
+		    		DevRel
+		    	</a></li>
+		    
+		    	<li data-size="1"><a href="/categories/#Developer">
+		    		Developer
+		    	</a></li>
+		    
+		    	<li data-size="1"><a href="/categories/#DevTools">
+		    		DevTools
+		    	</a></li>
+		    
+		    	<li data-size="1"><a href="/categories/#API">
+		    		API
+		    	</a></li>
+		    
+		    	<li data-size="1"><a href="/categories/#DX">
+		    		DX
+		    	</a></li>
+		    
+		  
+	      
+
+	  </ul>
+	  
+
+	  <!-- Disqus -->
+	      <div id="disqus_thread" style="margin-top: 3em"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'laoazhang'; // required: replace example with your forum shortname
+				
+
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">
+
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#main -->
+
+<footer>
+  <small class="copyright">
+    <span>&copy; 2024 laoazhang. Powered by <a href="http://jekyllrb.com">Jekyll</a> with modified <em>Minimal Mistakes</em> theme. Hosted on <a href="http://github.com">Github</a>.
+  </small>
+</footer>
+
+<script src="https://laoazhang.cn/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-2635445-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script>
+
+</script>
+
+</body>
+</html>
