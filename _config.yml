@@ -13,7 +13,7 @@ port: 4444
 owner:
   name: laoazhang
   avatar: avatar.jpg
-  bio: 'An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.'
+  bio: 'An Open Web advocate and front-end engineer and back-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, TS, JAVA, PYTHON, tech events, gadgets, etc.'
   email: laoaxiao@gmail.com
   twitter: laoazhang
   facebook: laoazhang
@@ -26,8 +26,8 @@ owner:
   google_plus:
 
 # Analytics and webmaster tools stuff goes here
-google_analytics: UA-2635445-1
-google_verify: I-NDFBl5t1P9fqHmRNZhwu8OOHmwW4HADPiOr_r16cE
+google_analytics: G-R4K4H6PBL4
+google_verify: WciHRRUwT2u9br0h5ARrRw
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
 bing_verify:
 
