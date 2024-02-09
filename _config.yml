@@ -45,6 +45,8 @@ links:
   - title: My CodePen
     url: https://codepen.io/laoazhang
     external: true
+  - title: demo
+    url: /demo
   #- title: Nostalgia
   #url: /nostalgia
 

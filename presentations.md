@@ -11,7 +11,7 @@ I am so fortunate enough to be invited to speak at conferences and tech events i
 
 Watch me interview by TechCrunch's Sarah Lane on [TWiT TV](https://twit.tv/shows/new-screen-savers/episodes/19)!
 
-![New ScreenSavers Show](/assets/images/screensavers.png)
+![New ScreenSavers Show](/assets/images/avatar.jpg)
 
 ## Conferences
 
