@@ -15,7 +15,6 @@ modified: 02-10-2024
 <head>
   <meta charset="UTF-8">
   <title>HTML Document</title>
-  <script async src="/assets/js/busuanzi.pure.mini.js"></script>
 </head>
   
 <body>
