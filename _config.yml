@@ -43,19 +43,15 @@ links:
     url: /blog
   - title: Knowledge Planet
     url: /planet
-  - title: My Notes
-    url: /notes
-  - title: Categories
-    url: /categories
+  - title: Sketch Notes
+    url: /doodles
   - title: My CodePen
     url: https://codepen.io/laoazhang
     external: true
-  - title: Nostalgia
-    url: /nostalgia
-  - title: Archive
-    url: /blog
-  - title: Search
-    url: /search
+  - title: Categories
+    url: /categories
+  # - title: Nostalgia
+  #   url: /nostalgia
 
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones

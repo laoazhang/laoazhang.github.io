@@ -1,7 +1,7 @@
 ---
-layout: page
-permalink: /notes/
-title: My Notes
+layout: post-doodles
+permalink: /doodles/
+title: Sketch Notes and Doodles
 tagline: A List of Posts about doodles and sketch notes
 description: My sketch notes and doodles from conferences and more!
 images:
@@ -9,10 +9,3 @@ images:
 tags: [blog]
 modified: 02-10-2024
 ---
-- ## [<u>JAVA</u>](/java)
-
-- ## [<u>PYTHON</u>](/python)
-
-- ## [<u>MYSQL</u>](/mysql)
-
-- ## [<u>GO</u>](/go)
