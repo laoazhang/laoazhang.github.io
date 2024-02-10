@@ -1,4 +1,4 @@
-Articles on girliemac.com are in Markdown. [Jekyll][jekyll] is used to generate the static HTML for the site, and the output is generated into a `_site` folder and served from Github pages.
+Articles on laoazhang.cn are in Markdown. [Jekyll][jekyll] is used to generate the static HTML for the site, and the output is generated into a `_site` folder and served from Github pages.
 
 ## Prereqs and installation requirements
 

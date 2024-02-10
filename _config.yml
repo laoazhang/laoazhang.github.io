@@ -9,6 +9,9 @@ markdown: kramdown
 highlighter: rouge
 port: 4444
 
+plugins:
+  - jekyll-feed
+
 # Author information
 owner:
   name: laoazhang
@@ -38,15 +41,22 @@ links:
     url: /about
   - title: Archive
     url: /blog
-  - title: Preso
-    url: /presentations
-  - title: Sketch Notes
-    url: /doodles
+  - title: Knowledge Planet
+    url: /planet
+  - title: My Notes
+    url: /notes
+  - title: Categories
+    url: /categories
   - title: My CodePen
     url: https://codepen.io/laoazhang
     external: true
-  #- title: Nostalgia
-  #url: /nostalgia
+  - title: Nostalgia
+    url: /nostalgia
+  - title: Archive
+    url: /blog
+  - title: Search
+    url: /search
+
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: America/Los_Angeles
