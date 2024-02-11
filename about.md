@@ -9,22 +9,20 @@ modified: 02-10-2024
 ---
 
 
-
-
 <html>
 <head>
   <meta charset="UTF-8">
   <title>HTML Document</title>
 </head>
 <body>
-<div style="color:#e32c5d">
-      Total <span id="busuanzi_value_site_pv"></span> views. &ensp;
+<div>
+      Total <strong><span id="busuanzi_value_site_pv" style="color:#e32c5d"></span></strong> views. &ensp;
       <br>
-      Total visits to this website： <span id="busuanzi_value_site_uv"></span>  &ensp;
+      The total number of visitors to this website： <strong><span id="busuanzi_value_site_uv" style="color:#e32c5d"></span></strong> &ensp;
       <br>
-      <span id="busuanzi_value_page_pv"></span> Hits
+      <strong><span id="busuanzi_value_page_pv" style="color:#e32c5d"></span></strong> Hits
 </div>
-<h1 align="center">You Are In Your Time Zone <br> 走在自己的时区里 </h1>
+<h3 align="center">You Are In Your Time Zone <br> 走在自己的时区里 </h3>
     <div align="center">
     <p>
     New York is 3 hours ahead of California,<br>
