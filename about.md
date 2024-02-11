@@ -18,9 +18,9 @@ modified: 02-10-2024
 <div>
       Total <strong><span id="busuanzi_value_site_pv" style="color:#e32c5d"></span></strong> views. &ensp;
       <br>
-      The total number of visitors to this website： <strong><span id="busuanzi_value_site_uv" style="color:#e32c5d"></span></strong> &ensp;
+      The total number of visitors to this website <strong><span id="busuanzi_value_site_uv" style="color:#e32c5d"></span></strong> &ensp;
       <br>
-      <strong><span id="busuanzi_value_page_pv" style="color:#e32c5d"></span></strong> Hits
+      You have browsed this page <strong><span id="busuanzi_value_page_pv" style="color:#e32c5d"></span></strong> times
 </div>
 <h3 align="center">You Are In Your Time Zone <br> 走在自己的时区里 </h3>
     <div align="center">
