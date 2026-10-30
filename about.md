@@ -9,10 +9,11 @@ modified: 02-10-2024
 ---
 
 
-<div>
-      Total <strong><span id="busuanzi_value_site_pv" style="color:#e32c5d"></span></strong> views. &ensp;
-      <br>
-      You are the <strong><span id="busuanzi_value_site_uv" style="color:#e32c5d"></span></strong>th visitor &ensp;
+<div class="js-counter" style="display:none">
+      Total <strong><span class="js-site-pv" style="color:#e32c5d"></span></strong> views.
+</div>
+<div class="js-counter" style="display:none">
+      This page has <strong><span class="js-page-pv" style="color:#e32c5d"></span></strong> views.
 </div>
 <h3 align="center">You Are In Your Time Zone <br> 走在自己的时区里 </h3>
 <div align="center">

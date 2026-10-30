@@ -5,6 +5,9 @@ url: https://laoazhang.cn
 domain: https://laoazhang.cn
 permalink: /blog/:year/:month/:day/:title/
 disqus_shortname: laoazhang
+# GoatCounter site code, e.g. "laoazhang" -> https://laoazhang.goatcounter.com
+# Leave empty to disable the visitor counter (the counter blocks hide themselves).
+goatcounter_code: ""
 markdown: kramdown
 highlighter: rouge
 port: 4444
