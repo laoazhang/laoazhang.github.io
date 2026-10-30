@@ -1,6 +1,4 @@
-_site
-_site_base
-_site_new
+_site*
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
@@ -9,3 +7,4 @@ vendor
 node_modules
 .bundle
 .workbuddy-ai
+_config_local.yml

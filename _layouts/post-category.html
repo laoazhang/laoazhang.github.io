@@ -25,7 +25,7 @@
   <div id="index" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
     <h1 itemprop="name">{{ page.title }}</h1>
 
-    {% for post in site.categories.doodle %}
+    {% for post in site.categories[page.category] %}
       <article itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
         <div class="article-wrap" itemprop="text">
           <h2 itemprop="headline"><a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}">{{ post.title }}</a></h2>

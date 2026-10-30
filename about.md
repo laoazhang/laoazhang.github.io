@@ -9,19 +9,13 @@ modified: 02-10-2024
 ---
 
 
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>HTML Document</title>
-</head>
-<body>
 <div>
       Total <strong><span id="busuanzi_value_site_pv" style="color:#e32c5d"></span></strong> views. &ensp;
       <br>
       You are the <strong><span id="busuanzi_value_site_uv" style="color:#e32c5d"></span></strong>th visitor &ensp;
 </div>
 <h3 align="center">You Are In Your Time Zone <br> 走在自己的时区里 </h3>
-    <div align="center">
+<div align="center">
     <p>
     New York is 3 hours ahead of California,<br>
     纽约时间比加州时间早三个小时，
@@ -112,6 +106,3 @@ modified: 02-10-2024
     在命运为你安排的属于你自己的时区里，一切都非常准时。
     </p>
     </div>
-</body>
-
-</html>

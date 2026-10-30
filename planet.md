@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: post-category
 title: My Planet
-layout: post-planet
+category: planet
 permalink: /planet/
 tagline: A List of Posts about doodles and sketch notes
 description: My sketch notes and doodles from conferences and more!
