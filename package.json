@@ -8,8 +8,8 @@
     "css:ie": "lessc assets/less/ie.less assets/css/ie.min.css --clean-css --math=always",
     "js": "terser assets/js/vendor/konami-js/konami.js assets/js/_main.js --compress --mangle --output assets/js/scripts.min.js",
     "assets": "npm run css && npm run css:ie && npm run js",
-    "build": "npm run assets && jekyll build",
-    "serve": "jekyll serve --port 4444"
+    "build": "npm run assets && bundle exec jekyll build",
+    "serve": "bundle exec jekyll serve --port 4444"
   },
   "devDependencies": {
     "less": "^4.2.0",

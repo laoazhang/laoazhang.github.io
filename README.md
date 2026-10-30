@@ -2,13 +2,30 @@ Articles on laoazhang.cn are written in Markdown. [Jekyll][jekyll] (4.3.x) gener
 
 ## Requirements
 
-- Ruby 3.x with Bundler (Jekyll 4.3 requires Ruby >= 2.7; `rouge`/`sass-embedded` need a modern Ruby)
+- Ruby 3.4 with Bundler (Jekyll 4.3 requires Ruby >= 2.7)
 - Node.js 18+ (only for rebuilding CSS/JS assets)
 
 ```bash
 bundle install
 npm install
 ```
+
+### Ruby setup on macOS
+
+Homebrew's `ruby@3.4` is keg-only, so put it on `PATH` first:
+
+```bash
+export PATH="/opt/homebrew/opt/ruby@3.4/bin:$PATH"
+```
+
+Ruby 3.4 removed several former default gems from the stdlib, and Jekyll 4.3
+still `require`s them at load time. That is why `Gemfile` pins `csv`, `logger`,
+`base64`, `bigdecimal` and `rake` explicitly — do not remove them, or
+`bundle exec jekyll` fails with `cannot load such file -- csv`.
+
+`google-protobuf` is pinned to the generic `3.25.8` build rather than a
+platform build: the `arm64-darwin` precompiled variants only ship extensions up
+to Ruby 3.3, while the generic gem compiles against the local Ruby.
 
 ## Build
 
