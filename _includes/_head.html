@@ -95,7 +95,14 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.url }}/assets/ico/apple-touch-icon-144x144-precomposed.png">
 {% if site.goatcounter_code and site.goatcounter_code != "" %}
 <script>window.GOATCOUNTER_BASE = "https://{{ site.goatcounter_code }}.goatcounter.com";</script>
-<script data-goatcounter="https://{{ site.goatcounter_code }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{% comment %}
+  count.js is served from this site instead of //gc.zgo.at: the upstream CDN
+  takes ~15s from mainland China for a 9KB file, so visits were routinely
+  lost before the script finished loading. The file is vendored verbatim
+  (ISC licence, see assets/js/goatcounter-count.js) and reads its endpoint
+  from the data-goatcounter attribute below, so no other change is needed.
+{% endcomment %}
+<script data-goatcounter="https://{{ site.goatcounter_code }}.goatcounter.com/count" async src="{{ site.url }}/assets/js/goatcounter-count.js"></script>
 {% else %}
 <script>window.GOATCOUNTER_BASE = "";</script>
 {% endif %}

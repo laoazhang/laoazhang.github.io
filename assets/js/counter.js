@@ -2,29 +2,44 @@
   "use strict";
 
   var base = window.GOATCOUNTER_BASE || "";
-  var wrappers = document.querySelectorAll(".js-counter");
+  var SITE_BLOCK = ".js-counter-site";
+  var PAGE_BLOCK = ".js-counter-page";
 
-  function hideAll() {
-    Array.prototype.forEach.call(wrappers, function (el) {
-      el.style.display = "none";
-    });
+  function each(selector, fn) {
+    Array.prototype.forEach.call(document.querySelectorAll(selector), fn);
   }
 
-  function showAll() {
-    Array.prototype.forEach.call(wrappers, function (el) {
+  // Blocks start hidden via an inline style; reveal one only when its number
+  // actually arrived, so a partial failure never leaves "Total  views.".
+  function reveal(selector) {
+    each(selector, function (el) {
       el.style.display = "";
     });
   }
 
   function setText(selector, value) {
-    Array.prototype.forEach.call(document.querySelectorAll(selector), function (el) {
+    each(selector, function (el) {
       el.textContent = value;
     });
   }
 
-  if (!base) {
-    hideAll();
-    return;
+  if (!base) return;
+
+  // Must resolve the path exactly the way count.js does, otherwise we query a
+  // different path than the one GoatCounter recorded. count.js prefers the
+  // canonical URL, e.g. /about/index.html is recorded as /about/.
+  function getPath() {
+    var loc = window.location;
+    var canonical = document.querySelector('link[rel="canonical"][href]');
+    if (canonical) {
+      var a = document.createElement("a");
+      a.href = canonical.href;
+      var stripWww = function (host) { return host.replace(/^www\./, ""); };
+      if (stripWww(a.hostname) === stripWww(loc.hostname)) {
+        loc = a;
+      }
+    }
+    return (loc.pathname + loc.search) || "/";
   }
 
   function fetchCount(path) {
@@ -39,23 +54,24 @@
         return res.json();
       })
       .then(function (data) {
-        if (!data || data.count == null) return "0";
+        if (!data || data.count == null) return null;
         return data.count;
       });
   }
 
   Promise.all([
     fetchCount("TOTAL").catch(function () { return null; }),
-    fetchCount(location.pathname).catch(function () { return null; })
+    fetchCount(getPath()).catch(function () { return null; })
   ]).then(function (res) {
     var site = res[0];
     var page = res[1];
-    if (site == null && page == null) {
-      hideAll();
-      return;
+    if (site != null) {
+      setText(".js-site-pv", site);
+      reveal(SITE_BLOCK);
     }
-    if (site != null) setText(".js-site-pv", site);
-    if (page != null) setText(".js-page-pv", page);
-    showAll();
-  }).catch(hideAll);
+    if (page != null) {
+      setText(".js-page-pv", page);
+      reveal(PAGE_BLOCK);
+    }
+  });
 })();

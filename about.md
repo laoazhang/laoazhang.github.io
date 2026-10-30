@@ -9,10 +9,10 @@ modified: 02-10-2024
 ---
 
 
-<div class="js-counter" style="display:none">
+<div class="js-counter js-counter-site" style="display:none">
       Total <strong><span class="js-site-pv" style="color:#e32c5d"></span></strong> views.
 </div>
-<div class="js-counter" style="display:none">
+<div class="js-counter js-counter-page" style="display:none">
       This page has <strong><span class="js-page-pv" style="color:#e32c5d"></span></strong> views.
 </div>
 <h3 align="center">You Are In Your Time Zone <br> 走在自己的时区里 </h3>
