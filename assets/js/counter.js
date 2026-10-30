@@ -31,12 +31,16 @@
     var url = base + "/counter/" + encodeURIComponent(path) + ".json";
     return fetch(url, { credentials: "omit" })
       .then(function (res) {
-        if (res.status === 404) return 0;
-        if (!res.ok) throw new Error("counter " + res.status);
+        // GoatCounter returns 404 for paths without views, but still sends a
+        // JSON body with count "0"; only treat other failures as errors.
+        if (!res.ok && res.status !== 404) {
+          throw new Error("counter " + res.status);
+        }
         return res.json();
       })
       .then(function (data) {
-        return data && data.count != null ? data.count : null;
+        if (!data || data.count == null) return "0";
+        return data.count;
       });
   }
 
