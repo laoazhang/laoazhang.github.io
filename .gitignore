@@ -1,7 +1,11 @@
 _site
+_site_base
+_site_new
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
 .DS_Store
 vendor
-.DS_Store
+node_modules
+.bundle
+.workbuddy-ai

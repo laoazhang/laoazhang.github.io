@@ -57,3 +57,25 @@ links:
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: America/Los_Angeles
 future: true
+
+# Files that must not be published to the generated site.
+# NOTE: defining `exclude` replaces Jekyll's defaults, so they are re-listed here.
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - package.json
+  - package-lock.json
+  - Gruntfile.js
+  - bower.json
+  - docs
+  - _site_base
+  - _site_new

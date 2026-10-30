@@ -1,15 +1,19 @@
 {
   "name": "laoazhang.github.io",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "private": true,
+  "description": "laoazhang.cn - Jekyll blog (Minimal Mistakes LESS theme)",
+  "scripts": {
+    "css": "lessc assets/less/main.less assets/css/main.min.css --clean-css --math=always",
+    "css:ie": "lessc assets/less/ie.less assets/css/ie.min.css --clean-css --math=always",
+    "js": "terser assets/js/vendor/konami-js/konami.js assets/js/_main.js --compress --mangle --output assets/js/scripts.min.js",
+    "assets": "npm run css && npm run css:ie && npm run js",
+    "build": "npm run assets && jekyll build",
+    "serve": "jekyll serve --port 4444"
+  },
   "devDependencies": {
-    "grunt": "~1.5.3",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-watch": "~0.5.2",
-    "grunt-contrib-imagemin": "~0.2.0",
-    "grunt-svgmin": "~0.2.0",
-    "grunt-recess": "~0.5.0",
-    "grunt-jekyll": "~0.4.1"
+    "less": "^4.2.0",
+    "less-plugin-clean-css": "^1.6.0",
+    "terser": "^5.31.0"
   }
 }
